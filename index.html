@@ -1,8 +1,3 @@
-﻿from pathlib import Path
-from zipfile import ZipFile
-
-# Create updated ultra-advanced HTML content based on earlier customization instructions
-updated_html = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,17 +167,3 @@ updated_html = """
 </body>
 </html>
 """
-
-# Save the updated HTML
-output_dir = Path("/mnt/data/aditya-final-portfolio")
-output_dir.mkdir(exist_ok=True)
-html_file = output_dir / "index.html"
-html_file.write_text(updated_html, encoding="utf-8")
-
-# Create the ZIP archive
-zip_path = Path("/mnt/data/aditya-final-portfolio.zip")
-with ZipFile(zip_path, 'w') as zipf:
-    zipf.write(html_file, arcname="index.html")
-
-zip_path.name  # Return the ZIP file name for download
-
