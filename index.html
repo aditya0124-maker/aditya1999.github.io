@@ -1,0 +1,188 @@
+﻿from pathlib import Path
+from zipfile import ZipFile
+
+# Create updated ultra-advanced HTML content based on earlier customization instructions
+updated_html = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Vishwakarma | Portfolio</title>
+  <meta name="description" content="Aditya Vishwakarma - Sr. Business Development Executive Portfolio">
+  <meta name="keywords" content="Aditya Vishwakarma, business development, sales, portfolio, sr. bde">
+  <meta name="author" content="Aditya Vishwakarma">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --primary-color: #1e293b;
+      --accent-color: #3b82f6;
+      --card-bg: white;
+    }
+    body.dark {
+      --bg-color: #0f172a;
+      --text-color: #f8f9fa;
+      --card-bg: #1e293b;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      color: white;
+    }
+    header img {
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .job-desc {
+      display: none;
+      margin-top: 10px;
+    }
+    .job-button {
+      margin-top: 10px;
+    }
+    .btn, button {
+      padding: 10px 20px;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      margin: 5px;
+      box-shadow: 0 5px 10px rgba(59, 130, 246, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn:hover, button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(59, 130, 246, 0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--text-color);
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="dark-toggle btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <header>
+    <img src="https://via.placeholder.com/140" alt="Aditya Vishwakarma">
+    <h1>Hello, I'm Aditya</h1>
+    <h3>Sr. Business Development Executive</h3>
+    <p>Assistant Manager with expertise in driving revenue growth, seeking to utilize management and operational expertise in new challenges.</p>
+    <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <div class="card">
+      Dynamic business development and sales professional with over three years of experience. Proven track record in driving revenue growth and consistently exceeding targets. Skilled in fostering client relationships and delivering impactful outcomes. Committed to excellence and delivering impactful results in every role.
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="card">
+      <h3>Assistant Manager – <a href="https://verandahighered.com/" target="_blank">Veranda HigherEd</a></h3>
+      <button class="btn job-button" onclick="toggleDesc('job1')">Know More</button>
+      <div id="job1" class="job-desc">
+        <p>Jul 2024 - Mar 2025</p>
+        <p>Drive revenue growth by converting leads into sales and engaging C-suite executives. Consistently meet monthly sales targets and report directly to the Senior Manager. Foster strong client relationships to enhance business development opportunities.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Admission Counselor – <a href="https://www.upgrad.com/" target="_blank">upGrad | Talentedge</a></h3>
+      <button class="btn job-button" onclick="toggleDesc('job2')">Know More</button>
+      <div id="job2" class="job-desc">
+        <p>Feb 2023 - Jan 2024</p>
+        <p>Provided guidance and facilitated the sale of professional certifications and executive programs from IIMs, XLRI, IIIT Bangalore, and upGrad's in-house offerings. Achieved monthly targets through team collaboration and effective lead management.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Academic Counselor – <a href="https://www.collegedekho.com/" target="_blank">CollegeDekho</a></h3>
+      <button class="btn job-button" onclick="toggleDesc('job3')">Know More</button>
+      <div id="job3" class="job-desc">
+        <p>Jan 2022 - Dec 2022</p>
+        <p>Assisted students in selecting appropriate courses and completing registration. Successfully converted leads into sales for UG and PG programs, and consistently achieved daily interaction targets while resolving client concerns.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Downloads & Contact</h2>
+    <div class="card">
+      <a class="btn" href="Aditya-25.pdf" download>Download My Resume</a>
+      <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
+      <a class="btn" href="https://wa.me/919450650125" target="_blank">Connect on WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>&copy; 2025 Aditya Vishwakarma | All Rights Reserved</footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+    function toggleDesc(id) {
+      const desc = document.getElementById(id);
+      desc.style.display = desc.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
+"""
+
+# Save the updated HTML
+output_dir = Path("/mnt/data/aditya-final-portfolio")
+output_dir.mkdir(exist_ok=True)
+html_file = output_dir / "index.html"
+html_file.write_text(updated_html, encoding="utf-8")
+
+# Create the ZIP archive
+zip_path = Path("/mnt/data/aditya-final-portfolio.zip")
+with ZipFile(zip_path, 'w') as zipf:
+    zipf.write(html_file, arcname="index.html")
+
+zip_path.name  # Return the ZIP file name for download
+
