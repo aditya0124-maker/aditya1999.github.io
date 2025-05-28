@@ -288,21 +288,41 @@
   </footer>
 
   <script>
-    function toggleDark() {
-      document.documentElement.classList.toggle('dark');
-      document.body.classList.toggle('dark');
-    }
+  function toggleDark() {
+    document.documentElement.classList.toggle('dark');
+    document.body.classList.toggle('dark');
+  }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    });
+  document.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
 
-    function flipMobile(btn) {
-      const card = btn.closest('.flip-card');
-      card.classList.toggle('flipped');
+    // Disable hover effect on touch devices
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      document.querySelectorAll('.flip-card').forEach(card => {
+        card.classList.add('no-hover');
+
+        // Add tap-to-close logic
+        card.addEventListener('click', function (e) {
+          // Prevent toggling if it's the "Visit" button
+          if (e.target.tagName.toLowerCase() === 'a' && e.target.classList.contains('btn')) {
+            return;
+          }
+          // Only flip back if card is already flipped
+          if (this.classList.contains('flipped')) {
+            this.classList.remove('flipped');
+          }
+        });
+      });
     }
-  </script>
+  });
+
+  function flipCard(button) {
+    const card = button.closest('.flip-card');
+    card.classList.add('flipped');
+  }
+</script>
+
 
 </body>
 </html>
