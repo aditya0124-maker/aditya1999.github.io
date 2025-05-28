@@ -1,340 +1,609 @@
 <!DOCTYPE html>
+
 <html lang="en" class="dark">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aditya Vishwakarma | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f4f4f4;
-      --text: #1e293b;
-      --primary: #1e293b;
-      --accent: #3b82f6;
-      --card-bg: white;
-    }
 
-    .dark {
-      --bg: #0f172a;
-      --text: #f8f9fa;
-      --card-bg: #1e293b;
-    }
+  <meta charset="UTF-8" />
 
-    html {
-      scroll-behavior: smooth;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <title>Aditya Vishwakarma | Portfolio</title>
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      transition: background-color 0.4s, color 0.4s;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
 
-    header {
-      /* Changed to solid primary color for image blending */
-      background-color: var(--primary);
-      color: white;
-      padding: 40px 20px; /* Adjusted padding */
-      position: relative;
-    }
+  <style>
 
-    .header-content {
-      max-width: 1100px; /* Aligns with container width */
-      margin: auto;
-      display: flex; /* Enables two-column layout */
-      align-items: center; /* Vertically centers items */
-      gap: 30px; /* Space between image and text */
-    }
+    :root {
 
-    .profile-image {
-      width: 160px; /* Adjust size as needed */
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-      background-color: var(--primary); /* Key for blending: same as header background */
-      padding: 5px; /* Small padding for visual separation from true transparency */
-    }
+      --bg: #f4f4f4;
 
-    .profile-info {
-      flex-grow: 1; /* Allows text to take available space */
-      text-align: left; /* Aligns text to the left within its column */
-    }
+      --text: #1e293b;
 
-    .profile-info h1,
-    .profile-info h3,
-    .profile-info p {
-      margin-bottom: 10px; /* Spacing between text elements */
-    }
+      --primary: #1e293b;
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+      --accent: #3b82f6;
 
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: var(--accent);
-    }
+      --card-bg: white;
 
-    .summary {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 50px;
-    }
+    }
 
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
 
-    .flip-card {
-      width: 280px;
-      height: 320px;
-      perspective: 1000px;
-    }
 
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s ease-in-out;
-      transform-style: preserve-3d;
-    }
+    .dark {
 
-    .flip-card:not(.no-hover):hover .flip-card-inner,
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
+      --bg: #0f172a;
 
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--card-bg);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+      --text: #f8f9fa;
 
-    .flip-card-back {
-      transform: rotateY(180deg);
-      background-color: #1f2937;
-      color: #f1f5f9;
-    }
+      --card-bg: #1e293b;
 
-    .btn {
-      margin-top: 15px;
-      padding: 10px 16px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-    }
+    }
 
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-    }
 
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 40px;
-    }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 14px;
-      color: #aaa;
-    }
+    html {
 
-    .toggle-dark {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      padding: 8px 14px;
-      background: white;
-      color: #1e293b;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      z-index: 999;
-      transition: transform 0.2s ease;
-    }
+      scroll-behavior: smooth;
 
-    .toggle-dark:hover {
-      transform: scale(1.1);
-    }
+    }
 
-    .mobile-know {
-      display: none;
-    }
 
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column; /* Stacks image and text on smaller screens */
-        text-align: center; /* Centers content when stacked */
-      }
 
-      .profile-image {
-        margin-bottom: 20px; /* Adds space below image when stacked */
-      }
+    * {
 
-      .profile-info {
-        text-align: center; /* Ensures text is centered when stacked */
-      }
+      margin: 0;
 
-      .mobile-know {
-        display: inline-block;
-      }
-    }
-  </style>
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
+
+
+
+    body {
+
+      font-family: 'Poppins', sans-serif;
+
+      background-color: var(--bg);
+
+      color: var(--text);
+
+      transition: background-color 0.4s, color 0.4s;
+
+    }
+
+
+
+    header {
+
+      background: linear-gradient(to right, var(--primary), var(--accent));
+
+      color: white;
+
+      text-align: center;
+
+      padding: 60px 20px;
+
+      position: relative;
+
+    }
+
+
+
+    header img {
+
+      width: 140px;
+
+      height: 140px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      margin-bottom: 20px;
+
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+
+    }
+
+
+
+    .container {
+
+      max-width: 1100px;
+
+      margin: auto;
+
+      padding: 40px 20px;
+
+    }
+
+
+
+    h2 {
+
+      text-align: center;
+
+      margin-bottom: 30px;
+
+      color: var(--accent);
+
+    }
+
+
+
+    .summary {
+
+      background: var(--card-bg);
+
+      padding: 20px;
+
+      border-radius: 10px;
+
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+      margin-bottom: 50px;
+
+    }
+
+
+
+    .grid {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 20px;
+
+      justify-content: center;
+
+    }
+
+
+
+    .flip-card {
+
+      width: 280px;
+
+      height: 320px;
+
+      perspective: 1000px;
+
+    }
+
+
+
+    .flip-card-inner {
+
+      position: relative;
+
+      width: 100%;
+
+      height: 100%;
+
+      transition: transform 0.8s ease-in-out;
+
+      transform-style: preserve-3d;
+
+    }
+
+
+
+    .flip-card:not(.no-hover):hover .flip-card-inner,
+
+    .flip-card.flipped .flip-card-inner {
+
+      transform: rotateY(180deg);
+
+    }
+
+
+
+    .flip-card-front,
+
+    .flip-card-back {
+
+      position: absolute;
+
+      width: 100%;
+
+      height: 100%;
+
+      backface-visibility: hidden;
+
+      border-radius: 10px;
+
+      padding: 20px;
+
+      background: var(--card-bg);
+
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+
+    }
+
+
+
+    .flip-card-back {
+
+      transform: rotateY(180deg);
+
+      background-color: #1f2937;
+
+      color: #f1f5f9;
+
+    }
+
+
+
+    .btn {
+
+      margin-top: 15px;
+
+      padding: 10px 16px;
+
+      background: var(--accent);
+
+      color: white;
+
+      border: none;
+
+      border-radius: 6px;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease;
+
+      font-weight: 600;
+
+    }
+
+
+
+    .btn:hover {
+
+      transform: scale(1.1);
+
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+
+    }
+
+
+
+    .contact {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      justify-content: center;
+
+      margin-top: 40px;
+
+    }
+
+
+
+    footer {
+
+      text-align: center;
+
+      padding: 30px 20px;
+
+      font-size: 14px;
+
+      color: #aaa;
+
+    }
+
+
+
+    .toggle-dark {
+
+      position: fixed;
+
+      top: 15px;
+
+      right: 15px;
+
+      padding: 8px 14px;
+
+      background: white;
+
+      color: #1e293b;
+
+      font-weight: bold;
+
+      border: none;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      z-index: 999;
+
+      transition: transform 0.2s ease;
+
+    }
+
+
+
+    .toggle-dark:hover {
+
+      transform: scale(1.1);
+
+    }
+
+
+
+    .mobile-know {
+
+      display: none;
+
+    }
+
+
+
+    @media (max-width: 768px) {
+
+      .mobile-know {
+
+        display: inline-block;
+
+      }
+
+    }
+
+  </style>
+
 </head>
+
 <body class="dark">
 
-  <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
 
-  <header>
-    <div class="header-content">
-      <img src="https://via.placeholder.com/160" alt="Aditya Vishwakarma" class="profile-image" />
-      <div class="profile-info">
-        <h1>Aditya Vishwakarma</h1>
-        <h3>Assistant Manager</h3>
-        <p>Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution</p>
-      </div>
-    </div>
-  </header>
 
-  <div class="container">
-    <h2>Professional Summary</h2>
-    <div class="summary">
-      <p>With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach. My experience includes engaging with C-suite executives, managing cross-functional teams, and streamlining operations to maximize efficiency and results.<p>
-      <br>
-      <p>Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.<p>
-      </div>
+  <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
 
-    <h2>Work Experience</h2>
-    <div class="grid">
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Assistant Manager</h3>
-            <p>Veranda HigherEd</p>
-            <p>Jul 2024 - Mar 2025</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
-          </div>
-          <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
-            <a class="btn" href="https://verandahighered.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Admission Counselor</h3>
-            <p>upGrad | Talentedge</p>
-            <p>Feb 2023 - Jan 2024</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
-          </div>
-          <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Empowered professionals with tailored program guidance while leading admissions efforts and supporting team success to consistently achieve enrollment targets.</p>
-            <a class="btn" href="https://www.upgrad.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
+  <header>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Academic Counselor</h3>
-            <p>CollegeDekho</p>
-            <p>Jan 2022 - Dec 2022</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
-          </div>
-          <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering tailored counseling, and collaborating cross-functionally to optimize service delivery.</p>
-            <a class="btn" href="https://www.collegedekho.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
+    <img src="https://via.placeholder.com/140" alt="Aditya Vishwakarma" />
 
-    </div>
+    <h1>Hello, I'm Aditya</h1>
 
-    <h2>Contact</h2>
-    <div class="contact">
-      <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
-      <a class="btn" href="https://wa.me/919450650125" target="_blank">Chat on WhatsApp</a>
-      <a class="btn" href="Aditya-25.pdf" download>Download My Resume</a>
-      <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
-    </div>
-  </div>
+    <h3>Assistant Manager</h3>
 
-  <footer>
-    &copy; 2025 Aditya Vishwakarma | All Rights Reserved
-  </footer>
+    <p>Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution</p>
 
-  <script>
-    function toggleDark() {
-      document.documentElement.classList.toggle('dark');
-      document.body.classList.toggle('dark');
-    }
+  </header>
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Ensure dark mode is applied on load
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
 
-      // Add no-hover class on mobile to prevent hover effect
-      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-        document.querySelectorAll('.flip-card').forEach(card => {
-          card.classList.add('no-hover');
-        });
-      }
-    });
 
-    function flipCard(btn) {
-      const card = btn.closest('.flip-card');
-      card.classList.add('flipped');
-    }
+  <div class="container">
 
-    function flipBack(event, backSide) {
-      if (event.target.tagName.toLowerCase() === 'a') return; // Do not flip back if link clicked
-      const card = backSide.closest('.flip-card');
-      card.classList.remove('flipped');
-    }
-  </script>
+    <h2>Professional Summary</h2>
+
+    <div class="summary">
+
+     <p>With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach. My experience includes engaging with C-suite executives, managing cross-functional teams, and streamlining operations to maximize efficiency and results.<p>
+
+     <br>
+
+     <p>Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.<p>
+
+     </div>
+
+
+
+    <h2>Work Experience</h2>
+
+    <div class="grid">
+
+
+
+      <!-- VERANDA -->
+
+      <div class="flip-card">
+
+        <div class="flip-card-inner">
+
+          <div class="flip-card-front">
+
+            <h3>Assistant Manager</h3>
+
+            <p>Veranda HigherEd</p>
+
+            <p>Jul 2024 - Mar 2025</p>
+
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+
+          </div>
+
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+
+            <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
+
+            <a class="btn" href="https://verandahighered.com/" target="_blank">Visit</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- UPGRAD -->
+
+      <div class="flip-card">
+
+        <div class="flip-card-inner">
+
+          <div class="flip-card-front">
+
+            <h3>Admission Counselor</h3>
+
+            <p>upGrad | Talentedge</p>
+
+            <p>Feb 2023 - Jan 2024</p>
+
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+
+          </div>
+
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+
+            <p>Empowered professionals with tailored program guidance while leading admissions efforts and supporting team success to consistently achieve enrollment targets.</p>
+
+            <a class="btn" href="https://www.upgrad.com/" target="_blank">Visit</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- COLLEGEDEKHO -->
+
+      <div class="flip-card">
+
+        <div class="flip-card-inner">
+
+          <div class="flip-card-front">
+
+            <h3>Academic Counselor</h3>
+
+            <p>CollegeDekho</p>
+
+            <p>Jan 2022 - Dec 2022</p>
+
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+
+          </div>
+
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+
+            <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering tailored counseling, and collaborating cross-functionally to optimize service delivery.</p>
+
+            <a class="btn" href="https://www.collegedekho.com/" target="_blank">Visit</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <h2>Contact</h2>
+
+    <div class="contact">
+
+      <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
+
+      <a class="btn" href="https://wa.me/919450650125" target="_blank">Chat on WhatsApp</a>
+
+      <a class="btn" href="Aditya-25.pdf" download>Download My Resume</a>
+
+      <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
+
+    </div>
+
+  </div>
+
+
+
+  <footer>
+
+    &copy; 2025 Aditya Vishwakarma | All Rights Reserved
+
+  </footer>
+
+
+
+  <script>
+
+    function toggleDark() {
+
+      document.documentElement.classList.toggle('dark');
+
+      document.body.classList.toggle('dark');
+
+    }
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      document.documentElement.classList.add('dark');
+
+      document.body.classList.add('dark');
+
+
+
+      // Add no-hover class on mobile to prevent hover effect
+
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+
+        document.querySelectorAll('.flip-card').forEach(card => {
+
+          card.classList.add('no-hover');
+
+        });
+
+      }
+
+    });
+
+
+
+    function flipCard(btn) {
+
+      const card = btn.closest('.flip-card');
+
+      card.classList.add('flipped');
+
+    }
+
+
+
+    function flipBack(event, backSide) {
+
+      if (event.target.tagName.toLowerCase() === 'a') return; // Do not flip back if link clicked
+
+      const card = backSide.closest('.flip-card');
+
+      card.classList.remove('flipped');
+
+    }
+
+  </script>
+
+
 
 </body>
+
 </html>
