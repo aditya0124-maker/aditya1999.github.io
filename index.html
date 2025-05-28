@@ -34,7 +34,6 @@
       font-family: 'Poppins', sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.6;
       transition: background-color 0.4s, color 0.4s;
     }
 
@@ -73,7 +72,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       margin-bottom: 50px;
-      animation: fadeIn 1s ease forwards;
     }
 
     .grid {
@@ -87,8 +85,6 @@
       width: 280px;
       height: 320px;
       perspective: 1000px;
-      position: relative;
-      animation: fadeIn 1s ease forwards;
     }
 
     .flip-card-inner {
@@ -99,7 +95,7 @@
       transform-style: preserve-3d;
     }
 
-    .flip-card:hover .flip-card-inner,
+    .flip-card:not(.no-hover):hover .flip-card-inner,
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
@@ -137,7 +133,6 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-weight: 600;
-      display: inline-block;
     }
 
     .btn:hover {
@@ -151,7 +146,6 @@
       gap: 15px;
       justify-content: center;
       margin-top: 40px;
-      animation: fadeIn 1s ease forwards;
     }
 
     footer {
@@ -188,21 +182,6 @@
       .mobile-know {
         display: inline-block;
       }
-
-      .flip-card:hover .flip-card-inner {
-        transform: none; /* disable hover for mobile */
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </head>
@@ -225,14 +204,14 @@
 
     <h2>Work Experience</h2>
     <div class="grid">
-      <!-- VERANDA -->
+
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <h3>Assistant Manager</h3>
             <p>Veranda HigherEd</p>
             <p>Jul 2024 - Mar 2025</p>
-            <button class="btn mobile-know" onclick="flipMobile(this)">Know More</button>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back">
             <p>Converted leads into sales, engaged C-suite executives, achieved revenue targets.</p>
@@ -241,14 +220,13 @@
         </div>
       </div>
 
-      <!-- UPGRAD -->
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <h3>Admission Counselor</h3>
             <p>upGrad | Talentedge</p>
             <p>Feb 2023 - Jan 2024</p>
-            <button class="btn mobile-know" onclick="flipMobile(this)">Know More</button>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back">
             <p>Promoted IIM & XLRI programs, advised professionals, exceeded monthly goals.</p>
@@ -257,14 +235,13 @@
         </div>
       </div>
 
-      <!-- COLLEGEDEKHO -->
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <h3>Academic Counselor</h3>
             <p>CollegeDekho</p>
             <p>Jan 2022 - Dec 2022</p>
-            <button class="btn mobile-know" onclick="flipMobile(this)">Know More</button>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back">
             <p>Helped students enroll in UG/PG courses, consistently met conversion targets.</p>
@@ -272,6 +249,7 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <h2>Contact</h2>
@@ -293,13 +271,21 @@
       document.body.classList.toggle('dark');
     }
 
+    // Auto-enable dark mode on load
     document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
+
+      // Detect mobile: disable hover by adding .no-hover to cards
+      if ('ontouchstart' in window || navigator.maxTouchPoints) {
+        document.querySelectorAll('.flip-card').forEach(card => {
+          card.classList.add('no-hover');
+        });
+      }
     });
 
-    function flipMobile(btn) {
-      const card = btn.closest('.flip-card');
+    function flipCard(button) {
+      const card = button.closest('.flip-card');
       card.classList.toggle('flipped');
     }
   </script>
