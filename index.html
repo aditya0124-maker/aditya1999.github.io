@@ -1,32 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aditya Vishwakarma | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1e293b;
-      --accent-color: #3b82f6;
-      --bg-color: #f8f9fa;
-      --text-color: #333;
+      --bg: #f4f4f4;
+      --text: #333;
+      --primary: #1e293b;
+      --accent: #3b82f6;
     }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
+      background-color: var(--bg);
+      color: var(--text);
     }
     header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      background: linear-gradient(to right, var(--primary), var(--accent));
       color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
     }
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
       padding: 40px 20px;
     }
@@ -34,27 +41,32 @@
       text-align: center;
       margin-bottom: 30px;
     }
-    .flip-grid {
+    .summary {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 50px;
+    }
+    .grid {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
     .flip-card {
-      background-color: transparent;
-      width: 300px;
-      height: 200px;
+      width: 280px;
+      height: 280px;
       perspective: 1000px;
     }
     .flip-card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      text-align: center;
-      transition: transform 0.8s;
+      transition: transform 0.8s ease-in-out;
       transform-style: preserve-3d;
     }
-    .flip-card.flipped .flip-card-inner {
+    .flip-card:hover .flip-card-inner {
       transform: rotateY(180deg);
     }
     .flip-card-front, .flip-card-back {
@@ -63,97 +75,123 @@
       height: 100%;
       backface-visibility: hidden;
       border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      background-color: white;
+      text-align: center;
     }
     .flip-card-back {
       transform: rotateY(180deg);
       background-color: #f0f4f8;
     }
     .btn {
-      padding: 8px 16px;
-      background-color: var(--accent-color);
+      padding: 10px 16px;
+      background: var(--accent);
       color: white;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      border-radius: 6px;
       margin-top: 10px;
+      text-decoration: none;
       transition: 0.3s;
     }
     .btn:hover {
       transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
     }
   </style>
-  <script>
-    function flipCard(card) {
-      card.classList.toggle('flipped');
-    }
-  </script>
 </head>
 <body>
 
-  <header>
-    <h1>Aditya Vishwakarma</h1>
-    <p>Sr. Business Development Executive</p>
-    <p>Assistant Manager with expertise in driving revenue growth, seeking to utilize management and operational expertise in new challenges.</p>
-  </header>
+<header>
+  <img src="https://via.placeholder.com/140" alt="Aditya Vishwakarma" />
+  <h1>Hello, I'm Aditya</h1>
+  <h3>Sr. Business Development Executive</h3>
+  <p>Assistant Manager with expertise in driving revenue growth, seeking to utilize management and operational expertise in new challenges.</p>
+  <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
+</header>
 
-  <div class="container">
-    <h2>Work Experience</h2>
-    <div class="flip-grid">
-
-      <div class="flip-card" onclick="flipCard(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Assistant Manager</h3>
-            <p>Veranda HigherEd</p>
-            <button class="btn">Know More</button>
-          </div>
-          <div class="flip-card-back">
-            <p><strong>Jul 2024 - Mar 2025</strong></p>
-            <p>Converted leads into sales, engaged C-suite executives, met sales targets, and built strong client relationships.</p>
-            <a class="btn" href="https://verandahighered.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="flipCard(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Admission Counselor</h3>
-            <p>upGrad | Talentedge</p>
-            <button class="btn">Know More</button>
-          </div>
-          <div class="flip-card-back">
-            <p><strong>Feb 2023 - Jan 2024</strong></p>
-            <p>Guided professionals through program selection, met sales goals, collaborated with teams.</p>
-            <a class="btn" href="https://www.upgrad.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="flipCard(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Academic Counselor</h3>
-            <p>CollegeDekho</p>
-            <button class="btn">Know More</button>
-          </div>
-          <div class="flip-card-back">
-            <p><strong>Jan 2022 - Dec 2022</strong></p>
-            <p>Helped students select courses, converted UG/PG leads, maintained client satisfaction.</p>
-            <a class="btn" href="https://www.collegedekho.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
+<div class="container">
+  <h2>Professional Summary</h2>
+  <div class="summary">
+    Dynamic business development and sales professional with over three years of experience. Proven track record in driving revenue growth and consistently exceeding targets. Skilled in fostering client relationships and delivering impactful outcomes. Committed to excellence and delivering impactful results in every role.
   </div>
+
+  <h2>Work Experience</h2>
+  <div class="grid">
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h3>Assistant Manager</h3>
+          <p>Veranda HigherEd</p>
+          <p>Jul 2024 - Mar 2025</p>
+        </div>
+        <div class="flip-card-back">
+          <p>Converted leads into sales, engaged C-suite executives, achieved revenue targets.</p>
+          <a class="btn" href="https://verandahighered.com/" target="_blank">Visit</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h3>Admission Counselor</h3>
+          <p>upGrad | Talentedge</p>
+          <p>Feb 2023 - Jan 2024</p>
+        </div>
+        <div class="flip-card-back">
+          <p>Promoted IIM & XLRI programs, advised professionals, exceeded monthly goals.</p>
+          <a class="btn" href="https://www.upgrad.com/" target="_blank">Visit</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h3>Academic Counselor</h3>
+          <p>CollegeDekho</p>
+          <p>Jan 2022 - Dec 2022</p>
+        </div>
+        <div class="flip-card-back">
+          <p>Helped students enroll in UG/PG courses, consistently met conversion targets.</p>
+          <a class="btn" href="https://www.collegedekho.com/" target="_blank">Visit</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Contact</h2>
+  <div class="contact">
+    <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
+    <a class="btn" href="https://wa.me/919450650125" target="_blank">Chat on WhatsApp</a>
+    <a class="btn" href="Aditya-25.pdf" download>Download My Resume</a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Aditya Vishwakarma | All Rights Reserved
+</footer>
 
 </body>
 </html>
+"""
