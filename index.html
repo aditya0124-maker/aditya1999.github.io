@@ -42,7 +42,7 @@
       background: linear-gradient(to right, var(--primary), var(--accent));
       color: white;
       text-align: center;
-      padding: 50px 20px;
+      padding: 60px 20px;
       position: relative;
     }
 
@@ -161,16 +161,17 @@
     }
 
     .toggle-dark {
-      position: absolute;
+      position: fixed;
       top: 15px;
       right: 15px;
-      padding: 6px 14px;
+      padding: 8px 14px;
       background: white;
       color: #1e293b;
       font-weight: bold;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      z-index: 999;
       transition: transform 0.2s ease;
     }
 
@@ -178,19 +179,21 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 600px) {
+    .mobile-know {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
       .flip-card {
         width: 100%;
       }
 
-      .contact {
-        flex-direction: column;
-        align-items: center;
+      .mobile-know {
+        display: inline-block;
       }
 
-      .btn {
-        width: 90%;
-        text-align: center;
+      .flip-card:hover .flip-card-inner {
+        transform: none; /* disable hover flip on mobile */
       }
     }
 
@@ -206,15 +209,15 @@
     }
   </style>
 </head>
-<body>
+<body class="dark">
+
+  <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
 
   <header>
     <img src="https://via.placeholder.com/140" alt="Aditya Vishwakarma" />
     <h1>Hello, I'm Aditya</h1>
     <h3>Sr. Business Development Executive</h3>
     <p>Assistant Manager with expertise in driving revenue growth, seeking to utilize management and operational expertise in new challenges.</p>
-    <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
-    <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
   </header>
 
   <div class="container">
@@ -232,7 +235,7 @@
             <h3>Assistant Manager</h3>
             <p>Veranda HigherEd</p>
             <p>Jul 2024 - Mar 2025</p>
-            <span class="btn">Know More</span>
+            <span class="btn mobile-know">Know More</span>
           </div>
           <div class="flip-card-back">
             <p>Converted leads into sales, engaged C-suite executives, achieved revenue targets.</p>
@@ -248,7 +251,7 @@
             <h3>Admission Counselor</h3>
             <p>upGrad | Talentedge</p>
             <p>Feb 2023 - Jan 2024</p>
-            <span class="btn">Know More</span>
+            <span class="btn mobile-know">Know More</span>
           </div>
           <div class="flip-card-back">
             <p>Promoted IIM & XLRI programs, advised professionals, exceeded monthly goals.</p>
@@ -264,7 +267,7 @@
             <h3>Academic Counselor</h3>
             <p>CollegeDekho</p>
             <p>Jan 2022 - Dec 2022</p>
-            <span class="btn">Know More</span>
+            <span class="btn mobile-know">Know More</span>
           </div>
           <div class="flip-card-back">
             <p>Helped students enroll in UG/PG courses, consistently met conversion targets.</p>
@@ -279,6 +282,7 @@
       <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
       <a class="btn" href="https://wa.me/919450650125" target="_blank">Chat on WhatsApp</a>
       <a class="btn" href="Aditya-25.pdf" download>Download My Resume</a>
+      <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
     </div>
   </div>
 
@@ -289,7 +293,14 @@
   <script>
     function toggleDark() {
       document.documentElement.classList.toggle('dark');
+      document.body.classList.toggle('dark');
     }
+
+    // Force default dark mode on load
+    document.addEventListener("DOMContentLoaded", () => {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    });
   </script>
 
 </body>
