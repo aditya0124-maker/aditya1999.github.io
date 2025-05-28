@@ -38,20 +38,40 @@
     }
 
     header {
-      background: linear-gradient(to right, var(--primary), var(--accent));
+      /* Changed to solid primary color for image blending */
+      background-color: var(--primary);
       color: white;
-      text-align: center;
-      padding: 60px 20px;
+      padding: 40px 20px; /* Adjusted padding */
       position: relative;
     }
 
-    header img {
-      width: 140px;
-      height: 140px;
+    .header-content {
+      max-width: 1100px; /* Aligns with container width */
+      margin: auto;
+      display: flex; /* Enables two-column layout */
+      align-items: center; /* Vertically centers items */
+      gap: 30px; /* Space between image and text */
+    }
+
+    .profile-image {
+      width: 160px; /* Adjust size as needed */
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 20px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+      background-color: var(--primary); /* Key for blending: same as header background */
+      padding: 5px; /* Small padding for visual separation from true transparency */
+    }
+
+    .profile-info {
+      flex-grow: 1; /* Allows text to take available space */
+      text-align: left; /* Aligns text to the left within its column */
+    }
+
+    .profile-info h1,
+    .profile-info h3,
+    .profile-info p {
+      margin-bottom: 10px; /* Spacing between text elements */
     }
 
     .container {
@@ -180,6 +200,19 @@
     }
 
     @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column; /* Stacks image and text on smaller screens */
+        text-align: center; /* Centers content when stacked */
+      }
+
+      .profile-image {
+        margin-bottom: 20px; /* Adds space below image when stacked */
+      }
+
+      .profile-info {
+        text-align: center; /* Ensures text is centered when stacked */
+      }
+
       .mobile-know {
         display: inline-block;
       }
@@ -191,24 +224,27 @@
   <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
 
   <header>
-    <img src="https://via.placeholder.com/140" alt="Aditya Vishwakarma" />
-    <h1>Hello, I'm Aditya</h1>
-    <h3>Assistant Manager</h3>
-    <p>Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution</p>
+    <div class="header-content">
+      <img src="https://via.placeholder.com/160" alt="Aditya Vishwakarma" class="profile-image" />
+      <div class="profile-info">
+        <h1>Aditya Vishwakarma</h1>
+        <h3>Assistant Manager</h3>
+        <p>Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution</p>
+      </div>
+    </div>
   </header>
 
   <div class="container">
     <h2>Professional Summary</h2>
     <div class="summary">
-     <p>With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach. My experience includes engaging with C-suite executives, managing cross-functional teams, and streamlining operations to maximize efficiency and results.<p>
-     <br>
-     <p>Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.<p>
-     </div>
+      <p>With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach. My experience includes engaging with C-suite executives, managing cross-functional teams, and streamlining operations to maximize efficiency and results.<p>
+      <br>
+      <p>Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.<p>
+      </div>
 
     <h2>Work Experience</h2>
     <div class="grid">
 
-      <!-- VERANDA -->
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -224,7 +260,6 @@
         </div>
       </div>
 
-      <!-- UPGRAD -->
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -240,7 +275,6 @@
         </div>
       </div>
 
-      <!-- COLLEGEDEKHO -->
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -278,6 +312,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      // Ensure dark mode is applied on load
       document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
 
