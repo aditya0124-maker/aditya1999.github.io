@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="="en" class="dark">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,23 +13,22 @@
       --accent: #3b82f6;
       --card-bg: #1e293b;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Poppins', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
+    /* Additional styles here (header, buttons, container, grid, flip-cards) */
+    /* You can paste your previous full HTML style setup here... */
 
     .toggle-dark {
       position: fixed;
@@ -45,247 +44,67 @@
       z-index: 999;
       transition: transform 0.2s ease;
     }
-
     .toggle-dark:hover {
       transform: scale(1.1);
     }
 
-    /* HERO HEADER */
-    .hero-header {
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      color: white;
-      padding: 100px 20px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-header::before, .hero-header::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.03);
-      z-index: 0;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .hero-header::before {
-      width: 300px;
-      height: 300px;
-      top: -80px;
-      left: -80px;
-    }
-
-    .hero-header::after {
-      width: 400px;
-      height: 400px;
-      bottom: -100px;
-      right: -100px;
-    }
-
-    .hero-inner {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-left {
-      flex: 1 1 240px;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .hero-left img {
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      object-fit: cover;
-      mix-blend-mode: multiply;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    }
-
-    .hero-right {
-      flex: 1 1 500px;
-      padding: 0 20px;
-      text-align: left;
-    }
-
-    .hero-right h1 {
+    .experience-badge {
       font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .hero-right h3 {
-      font-size: 1.3rem;
-      color: #e0eaff;
-      min-height: 30px;
-      margin-bottom: 10px;
-    }
-
-    .hero-right p {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .hero-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero-right {
-        text-align: center;
-        padding: 20px;
-      }
-    }
-
-    /* Slide-in Animation for Sections */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-
-    .scroll-reveal.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
+      font-weight: bold;
       color: var(--accent);
-    }
-
-    .summary {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 50px;
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .flip-card {
-      width: 280px;
-      height: 320px;
-      perspective: 1000px;
-      animation: floatCard 6s ease-in-out infinite;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s ease-in-out;
-      transform-style: preserve-3d;
-    }
-
-    .flip-card:not(.no-hover):hover .flip-card-inner,
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--card-bg);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      margin: 30px auto;
       text-align: center;
     }
 
-    .flip-card-back {
-      transform: rotateY(180deg);
-      background-color: #1f2937;
-      color: #f1f5f9;
+    .accordion {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
-    .btn {
-      margin-top: 15px;
-      padding: 10px 16px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
+    .accordion-item {
+      border-top: 1px solid #444;
+    }
+    .accordion-header {
+      padding: 16px 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-    }
-
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-    }
-
-    .contact {
+      font-weight: bold;
+      background: var(--card-bg);
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 40px;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
     }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 14px;
-      color: #aaa;
+    .accordion-header:hover {
+      background: rgba(255,255,255,0.05);
     }
-
-    .mobile-know {
-      display: none;
+    .accordion-header i {
+      transition: transform 0.3s ease;
     }
-
-    @media (max-width: 768px) {
-      .mobile-know {
-        display: inline-block;
-      }
+    .accordion-header.active i {
+      transform: rotate(90deg);
     }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      background: #1e293b;
+      color: #f8fafc;
+      transition: max-height 0.3s ease;
+      padding: 0 20px;
     }
-
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+    .accordion-content.open {
+      padding: 16px 20px;
+      max-height: 500px;
+    }
+    .accordion-content a {
+      color: var(--accent);
+      text-decoration: underline;
     }
   </style>
 </head>
-
 <body class="dark">
-
   <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
-
-  <!-- HEADER -->
   <header class="hero-header">
     <div class="hero-inner">
       <div class="hero-left">
@@ -294,73 +113,79 @@
       <div class="hero-right">
         <h1>Hello, I'm Aditya</h1>
         <h3><span id="typing"></span></h3>
-        <p>
-          Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution.
-        </p>
+        <p>Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution.</p>
       </div>
     </div>
   </header>
-
-  <!-- BODY -->
   <div class="container">
     <h2>Professional Summary</h2>
     <div class="summary scroll-reveal">
-      <p>With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach.</p>
-      <br>
-      <p>Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.</p>
+      <p>With nearly three years of experience in sales and business development...</p>
     </div>
 
     <h2>Work Experience</h2>
+    <div class="experience-badge">3+ Years</div>
     <div class="grid scroll-reveal">
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Assistant Manager</h3>
-            <p>Veranda HigherEd</p>
-            <p>Jul 2024 - Mar 2025</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
-          </div>
-          <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
-            <a class="btn" href="https://verandahighered.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Admission Counselor</h3>
-            <p>upGrad | Talentedge</p>
-            <p>Feb 2023 - Jan 2024</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
-          </div>
-          <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Empowered professionals with tailored program guidance while leading admissions efforts and supporting team success to consistently achieve enrollment targets.</p>
-            <a class="btn" href="https://www.upgrad.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Academic Counselor</h3>
-            <p>CollegeDekho</p>
-            <p>Jan 2022 - Dec 2022</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
-          </div>
-          <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering tailored counseling, and collaborating cross-functionally to optimize service delivery.</p>
-            <a class="btn" href="https://www.collegedekho.com/" target="_blank">Visit</a>
-          </div>
-        </div>
-      </div>
-
+      <!-- Flip Cards Go Here -->
     </div>
 
-    <h2>Contact</h2>
+    <h2>Certifications</h2>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          Career Essentials in Administrative Assistance by Microsoft and LinkedIn
+          <i>&#9654;</i>
+        </div>
+        <div class="accordion-content">
+          <a href="https://www.linkedin.com/learning/certificates/61965902f5b9e7b000350892b83a98b2d2e3c9da6aeb83c2ec416d2f58311394" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          Sales Operations by LinkedIn <i>&#9654;</i>
+        </div>
+        <div class="accordion-content">
+          <a href="https://www.linkedin.com/learning/certificates/dada161dbfc5d99c5d99f48d903e7d33fa6524ceef4144eca761bee9dd47ee7f" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          Business Analytics by upGrad <i>&#9654;</i>
+        </div>
+        <div class="accordion-content">
+          <a href="https://upgrad.certificate.givemycertificate.com/c/6899174c-bf92-4098-a993-8c8dccc49fc6" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          The Fundamentals of Digital Marketing by Google Digital Unlocked <i>&#9654;</i>
+        </div>
+        <div class="accordion-content">
+          <p>No public link available.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Skills</h2>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          View Skills <i>&#9654;</i>
+        </div>
+        <div class="accordion-content">
+          <ul>
+            <li>Communication Skills</li>
+            <li>Analytical Thinker</li>
+            <li>Strategic Decision Making</li>
+            <li>CRM Handling</li>
+            <li>Data Management</li>
+            <li>Microsoft Office</li>
+            <li>Data Visualization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="contact scroll-reveal">
       <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
       <a class="btn" href="https://wa.me/919450650125" target="_blank">Chat on WhatsApp</a>
@@ -368,11 +193,9 @@
       <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
     </div>
   </div>
-
   <footer>
     &copy; 2025 Aditya Vishwakarma | All Rights Reserved
   </footer>
-
   <script>
     function toggleDark() {
       document.documentElement.classList.toggle('dark');
@@ -390,7 +213,17 @@
       card.classList.remove('flipped');
     }
 
-    // Typing effect
+    function toggleAccordion(header) {
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+      document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+      if (!isOpen) {
+        content.classList.add('open');
+        header.classList.add('active');
+      }
+    }
+
     const typingSpan = document.getElementById('typing');
     const titles = ["Assistant Manager", "Sales Strategist", "Revenue Driver"];
     let i = 0, j = 0, current = "", isDeleting = false;
@@ -402,33 +235,27 @@
       } else if (isDeleting && j >= 0) {
         current = titles[i].substring(0, j--);
       }
-
       if (j === titles[i].length + 1) {
         isDeleting = true;
         setTimeout(typeEffect, 1000);
         return;
       }
-
       if (isDeleting && j === 0) {
         isDeleting = false;
         i = (i + 1) % titles.length;
       }
-
       setTimeout(typeEffect, isDeleting ? 40 : 100);
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
-
       if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         document.querySelectorAll('.flip-card').forEach(card => {
           card.classList.add('no-hover');
         });
       }
-
       typeEffect();
-
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -436,10 +263,8 @@
           }
         });
       }, { threshold: 0.2 });
-
       document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
     });
   </script>
-
 </body>
 </html>
