@@ -31,48 +31,193 @@
       overflow-x: hidden;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #0f172a;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .navbar h1 {
+    header {
+      background: linear-gradient(to right, var(--primary), var(--accent));
       color: white;
-      font-size: 1.2rem;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .navbar ul {
-      list-style: none;
+    header::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.04);
+      top: -100px;
+      left: -100px;
+      border-radius: 50%;
+      z-index: 0;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.03);
+      bottom: -100px;
+      right: -120px;
+      border-radius: 50%;
+      z-index: 0;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    header * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      mix-blend-mode: multiply;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header h3 {
+      font-size: 1.3rem;
+      min-height: 30px;
+      color: #e0eaff;
+    }
+
+    header p {
+      max-width: 800px;
+      margin: auto;
+      padding: 10px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--accent);
+    }
+
+    .summary,
+    .grid,
+    .contact {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .summary {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 50px;
+    }
+
+    .grid {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
+      justify-content: center;
     }
 
-    .navbar ul li a {
+    .flip-card {
+      width: 280px;
+      height: 320px;
+      perspective: 1000px;
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease-in-out;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:not(.no-hover):hover .flip-card-inner,
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--card-bg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background-color: #1f2937;
+      color: #f1f5f9;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 10px 16px;
+      background: var(--accent);
       color: white;
-      font-weight: 500;
-      transition: color 0.3s;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
     }
 
-    .navbar ul li a:hover {
-      color: var(--accent);
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #aaa;
     }
 
     .toggle-dark {
       position: fixed;
-      bottom: 15px;
+      top: 15px;
       right: 15px;
       padding: 8px 14px;
       background: white;
@@ -89,290 +234,187 @@
       transform: scale(1.1);
     }
 
-    /* HERO SECTION */
-    header.hero {
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      color: white;
-      padding: 120px 20px 80px;
-      position: relative;
-      overflow: hidden;
-      animation: fadeZoom 1.2s ease-out;
+    .mobile-know {
+      display: none;
     }
 
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      z-index: 0;
-    }
-
-    .hero::before {
-      top: -80px;
-      left: -80px;
-      width: 300px;
-      height: 300px;
-    }
-
-    .hero::after {
-      bottom: -100px;
-      right: -100px;
-      width: 400px;
-      height: 400px;
-    }
-
-    .hero .floating-blobs {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .blob {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 50%;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .blob:nth-child(1) {
-      top: 10%;
-      left: 10%;
-      animation-delay: 0s;
-    }
-
-    .blob:nth-child(2) {
-      top: 30%;
-      right: 15%;
-      animation-delay: 2s;
-    }
-
-    .blob:nth-child(3) {
-      bottom: 20%;
-      left: 25%;
-      animation-delay: 4s;
+    @media (max-width: 768px) {
+      .mobile-know {
+        display: inline-block;
+      }
     }
 
     @keyframes float {
       0%, 100% {
-        transform: translateY(0px);
+        transform: translateY(0);
       }
       50% {
         transform: translateY(-20px);
       }
     }
 
-    .hero-content {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      max-width: 1100px;
-      margin: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-left {
-      flex: 1 1 220px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .hero-left img {
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      object-fit: cover;
-      mix-blend-mode: multiply;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-    }
-
-    .hero-right {
-      flex: 1 1 380px;
-      text-align: left;
-      padding: 0 20px;
-    }
-
-    .hero-right h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .hero-right h3 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-      color: #e0eaff;
-      min-height: 30px;
-    }
-
-    .hero-right p {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    @keyframes fadeZoom {
-      from {
-        opacity: 0;
-        transform: scale(0.96);
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0px);
       }
-      to {
-        opacity: 1;
-        transform: scale(1);
+      50% {
+        transform: translateY(-8px);
       }
-    }
-
-    @media (max-width: 768px) {
-      .hero-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero-right {
-        padding: 20px;
-        text-align: center;
-      }
-
-      .navbar ul {
-        flex-direction: column;
-        background: var(--card-bg);
-        position: absolute;
-        top: 60px;
-        right: 10px;
-        padding: 10px;
-        border-radius: 6px;
-        display: none;
-      }
-    }
-
-    /* SECTION STYLES */
-    section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      color: var(--accent);
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 14px;
-      color: #888;
     }
   </style>
 </head>
 <body class="dark">
 
-  <!-- NAVIGATION -->
-  <nav class="navbar">
-    <h1>Aditya</h1>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#summary">Summary</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- DARK MODE TOGGLE -->
   <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
 
-  <!-- HERO SECTION -->
-  <header class="hero" id="home">
-    <div class="floating-blobs">
-      <div class="blob"></div>
-      <div class="blob"></div>
-      <div class="blob"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-left">
-        <img src="https://via.placeholder.com/240x240" alt="Aditya Vishwakarma" />
-      </div>
-      <div class="hero-right">
-        <h1>Hello, I'm Aditya</h1>
-        <h3><span id="typing"></span></h3>
-        <p>
-          Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution.
-        </p>
-      </div>
-    </div>
+  <header>
+    <img src="https://via.placeholder.com/140" alt="Aditya Vishwakarma" />
+    <h1>Hello, I'm Aditya</h1>
+    <h3><span id="typing"></span></h3>
+    <p>Results-driven sales professional with a strong analytical mindset and a proven ability to drive revenue growth through strategic decision-making and client-centric execution</p>
   </header>
 
-  <!-- SUMMARY -->
-  <section id="summary">
+  <div class="container">
     <h2>Professional Summary</h2>
-    <p>
-      With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach.
-    </p>
-  </section>
+    <div class="summary scroll-reveal">
+      <p>With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach.</p>
+      <br>
+      <p>Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.</p>
+    </div>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
     <h2>Work Experience</h2>
-    <p>Coming soon: Flip cards with mobile-friendly logic already set up.</p>
-  </section>
+    <div class="grid scroll-reveal">
 
-  <!-- CONTACT -->
-  <section id="contact">
+      <!-- VERANDA -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Assistant Manager</h3>
+            <p>Veranda HigherEd</p>
+            <p>Jul 2024 - Mar 2025</p>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+          </div>
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+            <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
+            <a class="btn" href="https://verandahighered.com/" target="_blank">Visit</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- UPGRAD -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Admission Counselor</h3>
+            <p>upGrad | Talentedge</p>
+            <p>Feb 2023 - Jan 2024</p>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+          </div>
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+            <p>Empowered professionals with tailored program guidance while leading admissions efforts and supporting team success to consistently achieve enrollment targets.</p>
+            <a class="btn" href="https://www.upgrad.com/" target="_blank">Visit</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLLEGEDEKHO -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Academic Counselor</h3>
+            <p>CollegeDekho</p>
+            <p>Jan 2022 - Dec 2022</p>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+          </div>
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+            <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering tailored counseling, and collaborating cross-functionally to optimize service delivery.</p>
+            <a class="btn" href="https://www.collegedekho.com/" target="_blank">Visit</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:adadityakr111@gmail.com">adadityakr111@gmail.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/919450650125" target="_blank">Chat Now</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect</a></p>
-  </section>
+    <div class="contact scroll-reveal">
+      <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
+      <a class="btn" href="https://wa.me/919450650125" target="_blank">Chat on WhatsApp</a>
+      <a class="btn" href="Aditya-25.pdf" download>Download My Resume</a>
+      <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
+    </div>
+  </div>
 
-  <!-- FOOTER -->
   <footer>
-    &copy; 2025 Aditya Vishwakarma. All Rights Reserved.
+    &copy; 2025 Aditya Vishwakarma | All Rights Reserved
   </footer>
 
-  <!-- TYPING EFFECT -->
   <script>
     function toggleDark() {
       document.documentElement.classList.toggle('dark');
       document.body.classList.toggle('dark');
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const typing = document.getElementById("typing");
-      const titles = ["Assistant Manager", "Sales Strategist", "Revenue Driver"];
-      let i = 0, j = 0, current = "", isDeleting = false;
+    function flipCard(btn) {
+      const card = btn.closest('.flip-card');
+      card.classList.add('flipped');
+    }
 
-      function type() {
-        typing.innerHTML = current;
-        if (!isDeleting && j <= titles[i].length) {
-          current = titles[i].substring(0, j++);
-        } else if (isDeleting && j >= 0) {
-          current = titles[i].substring(0, j--);
-        }
+    function flipBack(event, backSide) {
+      if (event.target.tagName.toLowerCase() === 'a') return;
+      const card = backSide.closest('.flip-card');
+      card.classList.remove('flipped');
+    }
 
-        if (j === titles[i].length + 1) {
-          isDeleting = true;
-          setTimeout(type, 1000);
-          return;
-        }
+    // Typing effect
+    const typingSpan = document.getElementById('typing');
+    const titles = ["Assistant Manager", "Sales Strategist", "Revenue Driver"];
+    let i = 0, j = 0, current = "", isDeleting = false;
 
-        if (isDeleting && j === 0) {
-          isDeleting = false;
-          i = (i + 1) % titles.length;
-        }
-
-        setTimeout(type, isDeleting ? 40 : 100);
+    function typeEffect() {
+      typingSpan.innerHTML = current;
+      if (!isDeleting && j <= titles[i].length) {
+        current = titles[i].substring(0, j++);
+      } else if (isDeleting && j >= 0) {
+        current = titles[i].substring(0, j--);
       }
 
-      type();
+      if (j === titles[i].length + 1) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+        return;
+      }
+
+      if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % titles.length;
+      }
+
+      setTimeout(typeEffect, isDeleting ? 40 : 100);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+
+      // mobile fix
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        document.querySelectorAll('.flip-card').forEach(card => {
+          card.classList.add('no-hover');
+        });
+      }
+
+      typeEffect();
+
+      // reveal scroll animations
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
     });
   </script>
 
