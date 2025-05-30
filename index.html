@@ -35,7 +35,7 @@
       position: fixed;
       top: 18px;
       right: 18px;
-      padding: 10px 18px;
+      padding: 8px 14px;
       background: var(--accent);
       color: #fff;
       font-weight: bold;
@@ -43,10 +43,10 @@
       border-radius: 99px;
       cursor: pointer;
       z-index: 999;
-      font-size: 1.15rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.5em;
+      gap: 0.4em;
       box-shadow: 0 2px 16px rgba(59,130,246,0.16);
       outline: none;
       transition: background 0.3s, color 0.3s, transform 0.2s;
@@ -220,23 +220,19 @@
     }
 
     .grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 28px;
-      justify-content: center;
+      justify-items: center;
       margin-bottom: 44px;
       animation: fadeIn 1.4s;
     }
-    /* Adjust flip card sizes for better fit */
     .flip-card {
-      flex: 1 1 260px; /* smaller base width */
-      min-width: 240px;
-      max-width: 280px;
+      width: 280px;
       height: 340px;
       perspective: 1100px;
       animation: floatCard 6s ease-in-out infinite;
       border-radius: 14px;
-      margin-bottom: 0;
       box-sizing: border-box;
     }
     .flip-card-inner {
@@ -357,16 +353,16 @@
     @keyframes fadeInDown { from { opacity:0; transform: translateY(-28px);} to { opacity:1; transform: none;} }
     .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);}
     .scroll-reveal.animate { opacity: 1; transform: translateY(0);}
-    @media (max-width: 1100px) {
-      .grid { gap:18px; justify-content: center;}
-      .flip-card { max-width: 280px; flex: 1 1 calc(33.333% - 20px); }
-    }
-    @media (max-width: 875px) {
-      .hero-inner { flex-direction: column; gap: 14px; text-align: center;}
-      .hero-right { text-align: center; align-items: center; padding: 24px 0 0 0;}
-      .container { padding: 36px 4vw 24px; }
-      .grid { gap: 18px; justify-content: center; }
-      .flip-card { width: 90vw; height: 340px; flex: 1 1 90vw; max-width: 90vw; }
+    @media (max-width: 870px) {
+      .grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+      .flip-card {
+        width: 90vw;
+        max-width: 320px;
+        margin: 0 auto;
+      }
       .mobile-know { display: inline-block; }
     }
     @media (max-width: 600px) {
@@ -425,6 +421,21 @@
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
+            <h3>Sr. BDE</h3>
+            <p>Work in Progress</p>
+            <p>&nbsp;</p>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+          </div>
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+            <p>Will Update</p>
+            <a class="btn" href="https://www.nvidya.net/" target="_blank" rel="noopener">Visit</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
             <h3>Assistant Manager</h3>
             <p>Veranda HigherEd</p>
             <p>Jul 2024 - Mar 2025</p>
@@ -436,6 +447,7 @@
           </div>
         </div>
       </div>
+
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -450,6 +462,7 @@
           </div>
         </div>
       </div>
+
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -461,20 +474,6 @@
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering tailored counseling, and collaborating cross-functionally to optimize service delivery.</p>
             <a class="btn" href="https://www.collegedekho.com/" target="_blank" rel="noopener">Visit</a>
-          </div>
-        </div>
-      </div>
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <h3>Sr. BDE</h3>
-            <p>Work in Progress</p>
-            <p>&nbsp;</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
-          </div>
-          <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Will Update</p>
-            <a class="btn" href="https://www.nvidya.net/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -581,3 +580,4 @@
   </script>
 </body>
 </html>
+
