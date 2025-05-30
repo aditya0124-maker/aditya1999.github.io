@@ -12,6 +12,7 @@
       --primary: #1e293b;
       --accent: #3b82f6;
       --card-bg: #1e293b;
+      --badge-bg: #3b82f6;
     }
 
     html {
@@ -56,30 +57,6 @@
       padding: 100px 20px 80px;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-header::before,
-    .hero-header::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.03);
-      z-index: 0;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .hero-header::before {
-      width: 300px;
-      height: 300px;
-      top: -80px;
-      left: -80px;
-    }
-
-    .hero-header::after {
-      width: 400px;
-      height: 400px;
-      bottom: -100px;
-      right: -100px;
     }
 
     .hero-inner {
@@ -143,21 +120,21 @@
         padding: 20px;
       }
     }
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-
-    .scroll-reveal.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     .container {
       max-width: 1100px;
       margin: auto;
       padding: 40px 20px;
+    }
+
+    .summary {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      font-size: 1rem;
+      line-height: 1.8;
     }
 
     h2 {
@@ -166,130 +143,21 @@
       color: var(--accent);
     }
 
-    .summary {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 50px;
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .flip-card {
-      width: 280px;
-      height: 320px;
-      perspective: 1000px;
-      animation: floatCard 6s ease-in-out infinite;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s ease-in-out;
-      transform-style: preserve-3d;
-    }
-
-    .flip-card:not(.no-hover):hover .flip-card-inner,
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--card-bg);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .flip-card-back {
-      transform: rotateY(180deg);
-      background-color: #1f2937;
-      color: #f1f5f9;
-    }
-
-    .btn {
-      margin-top: 15px;
-      padding: 10px 16px;
-      background: var(--accent);
+    .badge {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 30px;
+      background: var(--badge-bg);
       color: white;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
       font-weight: 600;
-    }
-
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-    }
-
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    .dropdown {
-      margin-bottom: 30px;
-    }
-
-    .dropdown-content {
-      display: none;
-      margin-top: 10px;
-      animation: fadeIn 0.5s ease-in-out forwards;
-    }
-
-    .dropdown.open .dropdown-content {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
+      font-size: 1.2rem;
+      margin: 20px auto;
       text-align: center;
-      padding: 30px 20px;
-      font-size: 14px;
-      color: #aaa;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
 
 <body class="dark">
-
   <button class="toggle-dark" onclick="toggleDark()">☀️ / 🌙</button>
 
   <!-- HEADER -->
@@ -308,21 +176,23 @@
     </div>
   </header>
 
-  <!-- CONTENT -->
   <div class="container">
     <h2>Professional Summary</h2>
-    <div class="summary scroll-reveal">
-      <p>With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies...</p>
+    <div class="summary">
+      <p>
+        With nearly three years of experience in sales and business development, I specialize in driving revenue growth, managing client relationships, and executing high-impact sales strategies. I have consistently exceeded performance targets by leveraging data insights, strong negotiation skills, and an adaptable, problem-solving approach.
+      </p>
+      <p>
+        Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.
+      </p>
     </div>
-
     <!-- EXPERIENCE BADGE -->
-    <div style="text-align:center; font-size:2rem; color:var(--accent); margin-bottom: 30px;">
-      <strong>3+</strong> Years of Experience
+    <div style="text-align:center;">
+      <span class="badge">3+ Years of Experience</span>
     </div>
 
     <h2>Work Experience</h2>
-    <div class="grid scroll-reveal">
-      <!-- Flip Cards (3 cards from original code) -->
+    <div class="grid">
       <!-- VERANDA -->
       <div class="flip-card">
         <div class="flip-card-inner">
@@ -333,7 +203,7 @@
             <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Leading sales initiatives with a focus on revenue growth...</p>
+            <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets and drive operational results.</p>
             <a class="btn" href="https://verandahighered.com/" target="_blank">Visit</a>
           </div>
         </div>
@@ -349,7 +219,7 @@
             <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Empowered professionals with tailored program guidance...</p>
+            <p>Empowered professionals with tailored program guidance while leading admissions efforts, CRM follow-ups, and cross-functional support to consistently exceed targets.</p>
             <a class="btn" href="https://www.upgrad.com/" target="_blank">Visit</a>
           </div>
         </div>
@@ -365,64 +235,51 @@
             <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
-            <p>Guided students through UG/PG admissions by managing...</p>
+            <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering personalized counseling, and improving conversion outcomes through teamwork.</p>
             <a class="btn" href="https://www.collegedekho.com/" target="_blank">Visit</a>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- CERTIFICATIONS -->
+    <!-- CERTIFICATIONS SECTION -->
     <h2>Certifications</h2>
-    <div class="summary scroll-reveal">
-      <div class="dropdown">
-        <button class="btn" onclick="toggleDropdown(this)">Career Essentials in Administrative Assistance</button>
-        <div class="dropdown-content">
-          <a class="btn" href="https://www.linkedin.com/learning/certificates/619659..." target="_blank">View Certificate</a>
-        </div>
+    <div class="grid">
+      <div class="summary dropdown-column">
+        <h3 style="margin-bottom: 10px;">Career Essentials in Administrative Assistance</h3>
+        <a class="btn" href="https://www.linkedin.com/learning/certificates/61965902f5b9e7b000350892b83a98b2d2e3c9da6aeb83c2ec416d2f58311394" target="_blank">View Certificate</a>
       </div>
-      <div class="dropdown">
-        <button class="btn" onclick="toggleDropdown(this)">Sales Operations by LinkedIn</button>
-        <div class="dropdown-content">
-          <a class="btn" href="https://www.linkedin.com/learning/certificates/dada161..." target="_blank">View Certificate</a>
-        </div>
+      <div class="summary dropdown-column">
+        <h3 style="margin-bottom: 10px;">Sales Operations by LinkedIn</h3>
+        <a class="btn" href="https://www.linkedin.com/learning/certificates/dada161dbfc5d99c5d99f48d903e7d33fa6524ceef4144eca761bee9dd47ee7f" target="_blank">View Certificate</a>
       </div>
-      <div class="dropdown">
-        <button class="btn" onclick="toggleDropdown(this)">Business Analytics by upGrad</button>
-        <div class="dropdown-content">
-          <a class="btn" href="https://upgrad.certificate.givemycertificate.com/c/6899..." target="_blank">View Certificate</a>
-        </div>
+      <div class="summary dropdown-column">
+        <h3 style="margin-bottom: 10px;">Business Analytics by upGrad</h3>
+        <a class="btn" href="https://upgrad.certificate.givemycertificate.com/c/6899174c-bf92-4098-a993-8c8dccc49fc6" target="_blank">View Certificate</a>
       </div>
-      <div class="dropdown">
-        <button class="btn" onclick="toggleDropdown(this)">The Fundamentals of Digital Marketing</button>
-        <div class="dropdown-content">
-          <span style="color:#ccc;">Certificate Link Not Provided</span>
-        </div>
+      <div class="summary dropdown-column">
+        <h3 style="margin-bottom: 10px;">Fundamentals of Digital Marketing</h3>
+        <span style="color:#ccc;">No certificate link provided</span>
       </div>
     </div>
 
-    <!-- SKILLS -->
+    <!-- SKILLS SECTION -->
     <h2>Skills</h2>
-    <div class="summary scroll-reveal">
-      <div class="dropdown">
-        <button class="btn" onclick="toggleDropdown(this)">Show My Skills</button>
-        <div class="dropdown-content">
-          <ul style="list-style:none; padding:0;">
-            <li>Communication Skills (English & Hindi)</li>
-            <li>Analytical Thinker</li>
-            <li>Strategic Decision Making</li>
-            <li>CRM Handling</li>
-            <li>Data Management</li>
-            <li>Microsoft Office</li>
-            <li>Data Visualization</li>
-          </ul>
-        </div>
+    <div class="grid">
+      <div class="summary dropdown-column" style="flex: 1 1 400px;">
+        <ul style="list-style: none; padding-left: 0; line-height: 2;">
+          <li>✅ Communication Skills (English & Hindi)</li>
+          <li>✅ Analytical Thinker</li>
+          <li>✅ Strategic Decision Making</li>
+          <li>✅ CRM Handling</li>
+          <li>✅ Data Management</li>
+          <li>✅ Microsoft Office</li>
+          <li>✅ Data Visualization</li>
+        </ul>
       </div>
     </div>
-
-    <!-- CONTACT -->
+    <!-- CONTACT SECTION -->
     <h2>Contact</h2>
-    <div class="contact scroll-reveal">
+    <div class="contact">
       <a class="btn" href="mailto:adadityakr111@gmail.com">Drop an Email</a>
       <a class="btn" href="https://wa.me/919450650125" target="_blank">Chat on WhatsApp</a>
       <a class="btn" href="Aditya-25.pdf" download>Download My Resume</a>
@@ -430,16 +287,20 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer>
     &copy; 2025 Aditya Vishwakarma | All Rights Reserved
   </footer>
 
+  <!-- JAVASCRIPT -->
   <script>
+    // Dark mode toggle
     function toggleDark() {
       document.documentElement.classList.toggle('dark');
       document.body.classList.toggle('dark');
     }
 
+    // Flipcard toggle
     function flipCard(btn) {
       const card = btn.closest('.flip-card');
       card.classList.add('flipped');
@@ -451,11 +312,7 @@
       card.classList.remove('flipped');
     }
 
-    function toggleDropdown(button) {
-      const parent = button.closest('.dropdown');
-      parent.classList.toggle('open');
-    }
-
+    // Typing effect
     const typingSpan = document.getElementById('typing');
     const titles = ["Assistant Manager", "Sales Strategist", "Revenue Driver"];
     let i = 0, j = 0, current = "", isDeleting = false;
@@ -483,9 +340,11 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      // Set dark mode on load
       document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
 
+      // Disable hover on touch devices
       if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         document.querySelectorAll('.flip-card').forEach(card => {
           card.classList.add('no-hover');
@@ -493,19 +352,8 @@
       }
 
       typeEffect();
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
-        });
-      }, { threshold: 0.2 });
-
-      document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
     });
   </script>
 
 </body>
 </html>
-
