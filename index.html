@@ -12,16 +12,13 @@
       --primary: #1e293b;
       --accent: #3b82f6;
       --card-bg: #1e293b;
-      --badge-bg: #facc15;
-      --badge-text: #1e293b;
+      --outline: #3b82f6;
       --light-bg: #f8f9fa;
       --light-card-bg: #fff;
       --light-text: #1e293b;
       --light-accent: #3b82f6;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
@@ -47,12 +44,12 @@
       cursor: pointer;
       z-index: 999;
       font-size: 1.15rem;
-      box-shadow: 0 2px 16px rgba(59,130,246,0.16);
-      outline: none;
-      transition: background 0.3s, color 0.3s, transform 0.2s;
       display: flex;
       align-items: center;
       gap: 0.5em;
+      box-shadow: 0 2px 16px rgba(59,130,246,0.16);
+      outline: none;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
     }
     .toggle-dark.light {
       background: var(--light-accent);
@@ -63,7 +60,6 @@
       box-shadow: 0 4px 24px rgba(59,130,246,0.28);
     }
 
-    /* HERO HEADER */
     .hero-header {
       background: linear-gradient(110deg, var(--primary) 60%, var(--accent) 100%);
       color: white;
@@ -139,25 +135,6 @@
       font-weight: 600;
       letter-spacing: 0.01em;
     }
-    .hero-badge {
-      display: inline-block;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      font-weight: bold;
-      padding: 6px 18px;
-      border-radius: 99px;
-      font-size: 1rem;
-      margin-bottom: 12px;
-      margin-right: 14px;
-      vertical-align: middle;
-      box-shadow: 0 2px 8px rgba(250,204,21,0.13);
-      animation: badge-pop 1.5s cubic-bezier(.44,1.46,.46,.98) 1;
-    }
-    @keyframes badge-pop {
-      0% { transform: scale(0.7) rotate(-10deg); opacity: .4;}
-      70% { transform: scale(1.06) rotate(2deg);}
-      100% {transform: scale(1) rotate(0);}
-    }
     .hero-right h3 {
       font-size: 1.38rem;
       color: #e0eaff;
@@ -166,9 +143,7 @@
       font-weight: 400;
       letter-spacing: 0.02em;
     }
-    body.light .hero-right h3 {
-      color: var(--light-accent);
-    }
+    body.light .hero-right h3 { color: var(--light-accent); }
     .hero-right p {
       font-size: 1.15rem;
       line-height: 1.6;
@@ -176,16 +151,41 @@
       max-width: 600px;
       animation: fadeIn 1.2s;
     }
-    body.light .hero-right p {
-      color: var(--light-text);
-    }
+    body.light .hero-right p { color: var(--light-text); }
 
-    /* CONTAINER */
     .container {
       max-width: 1100px;
       margin: auto;
       padding: 50px 20px 40px;
     }
+    .badge-experience {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 22px auto;
+    }
+    .square-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--outline);
+      color: var(--outline);
+      font-weight: bold;
+      font-size: 1rem;
+      width: 120px;
+      height: 40px;
+      background: transparent;
+      border-radius: 8px;
+      text-align: center;
+      letter-spacing: 0.04em;
+      box-shadow: 0 2px 8px rgba(59,130,246,0.07);
+      margin-bottom: 0;
+      user-select: none;
+    }
+    @media (max-width:500px) {
+      .square-badge { width: 90vw; max-width: 160px; font-size: 0.98rem; height: 36px;}
+    }
+
     h2 {
       text-align: center;
       margin-bottom: 36px;
@@ -214,12 +214,12 @@
       box-shadow: 0 2px 16px rgba(59,130,246,0.10);
     }
 
-    /* GRID/FLIP CARDS */
     .grid {
       display: flex;
       flex-wrap: wrap;
       gap: 28px;
       justify-content: center;
+      margin-bottom: 44px;
       animation: fadeIn 1.4s;
     }
     .flip-card {
@@ -229,6 +229,9 @@
       animation: floatCard 6s ease-in-out infinite;
       border-radius: 14px;
       margin-bottom: 0;
+      flex: 1 1 290px;
+      min-width: 260px;
+      max-width: 320px;
     }
     .flip-card-inner {
       position: relative;
@@ -308,79 +311,21 @@
       overflow: hidden;
       outline: none;
     }
-    .btn:active {
-      transform: scale(0.97);
-    }
+    .btn:active { transform: scale(0.97);}
     .btn:hover, .btn:focus {
       background: #2563eb;
       color: #fff;
       transform: scale(1.07);
       box-shadow: 0 4px 28px rgba(59,130,246,0.18);
     }
-    .mobile-know {
-      display: none;
-    }
-    @media (max-width: 875px) {
-      .hero-inner {
-        flex-direction: column;
-        gap: 14px;
-        text-align: center;
-      }
-      .hero-right {
-        text-align: center;
-        align-items: center;
-        padding: 24px 0 0 0;
-      }
-      .container {
-        padding: 36px 4vw 24px;
-      }
-      .grid {
-        gap: 18px;
-      }
-      .flip-card {
-        width: 90vw;
-        max-width: 330px;
-        height: 340px;
-      }
-    }
-    @media (max-width: 600px) {
-      .hero-left img {
-        width: 140px;
-        height: 140px;
-      }
-      .hero-header {
-        padding: 58px 0 30px;
-      }
-      h2 {
-        font-size: 1.3rem;
-      }
-      .summary {
-        font-size: 1rem;
-        padding: 15px;
-      }
-      .flip-card {
-        height: 290px;
-      }
-      .btn {
-        font-size: 1rem;
-        padding: 10px 16px;
-      }
-      .contact {
-        gap: 8px;
-      }
-    }
-    @media (max-width: 768px) {
-      .mobile-know {
-        display: inline-block;
-      }
-    }
-    /* CONTACT */
+    .mobile-know { display: none; }
     .contact {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
       justify-content: center;
       margin-top: 42px;
+      margin-bottom: 0;
       animation: fadeInUp 1.2s;
     }
     footer {
@@ -391,37 +336,34 @@
       margin-top: 28px;
     }
     /* Animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0);}
-      50% { transform: translateY(-22px);}
+    @keyframes float { 0%, 100% { transform: translateY(0);} 50% { transform: translateY(-22px);} }
+    @keyframes floatCard { 0%, 100% { transform: translateY(0px);} 50% { transform: translateY(-8px);} }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(30px);} to { opacity:1; transform: none;} }
+    @keyframes fadeInUp { from { opacity:0; transform: translateY(40px);} to { opacity:1; transform: none;} }
+    @keyframes fadeInDown { from { opacity:0; transform: translateY(-28px);} to { opacity:1; transform: none;} }
+    .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);}
+    .scroll-reveal.animate { opacity: 1; transform: translateY(0);}
+    @media (max-width: 1100px) {
+      .grid { gap:18px;}
+      .flip-card { max-width: 320px; }
     }
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0px);}
-      50% { transform: translateY(-8px);}
+    @media (max-width: 875px) {
+      .hero-inner { flex-direction: column; gap: 14px; text-align: center;}
+      .hero-right { text-align: center; align-items: center; padding: 24px 0 0 0;}
+      .container { padding: 36px 4vw 24px; }
+      .grid { gap: 18px; }
+      .flip-card { width: 90vw; height: 340px; }
     }
-    @keyframes fadeIn {
-      from { opacity:0; transform: translateY(30px);}
-      to { opacity:1; transform: none;}
+    @media (max-width: 600px) {
+      .hero-left img { width: 140px; height: 140px; }
+      .hero-header { padding: 58px 0 30px;}
+      h2 { font-size: 1.3rem;}
+      .summary { font-size: 1rem; padding: 15px;}
+      .flip-card { height: 290px;}
+      .btn { font-size: 1rem; padding: 10px 16px;}
+      .contact { gap: 8px;}
     }
-    @keyframes fadeInUp {
-      from { opacity:0; transform: translateY(40px);}
-      to { opacity:1; transform: none;}
-    }
-    @keyframes fadeInDown {
-      from { opacity:0; transform: translateY(-28px);}
-      to { opacity:1; transform: none;}
-    }
-
-    /* Section reveal on scroll */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);
-    }
-    .scroll-reveal.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    @media (max-width: 768px) { .mobile-know { display: inline-block; } }
   </style>
 </head>
 <body>
@@ -439,7 +381,6 @@
         <img src="https://via.placeholder.com/240x240" alt="Aditya Vishwakarma's profile photo"/>
       </div>
       <div class="hero-right">
-        <span class="hero-badge">3+ Years Experience</span>
         <h1>Hello, I'm Aditya</h1>
         <h3><span id="typing"></span></h3>
         <p>
@@ -450,6 +391,10 @@
   </header>
 
   <div class="container">
+    <!-- Badge above work experience section -->
+    <div class="badge-experience">
+      <span class="square-badge">3+ Years Experience</span>
+    </div>
     <h2>Professional Summary</h2>
     <div class="summary scroll-reveal">
       <p>
@@ -515,7 +460,6 @@
       <a class="btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank">Connect on LinkedIn</a>
     </div>
   </div>
-
   <footer>
     &copy; 2025 Aditya Vishwakarma | All Rights Reserved
   </footer>
@@ -524,7 +468,6 @@
     const typingSpan = document.getElementById('typing');
     const titles = ["Assistant Manager", "Sales Strategist", "Revenue Driver"];
     let i = 0, j = 0, current = "", isDeleting = false;
-
     function typeEffect() {
       typingSpan.innerHTML = current;
       if (!isDeleting && j <= titles[i].length) {
@@ -570,10 +513,10 @@
       const isDark = !document.body.classList.contains('light');
       setMode(!isDark);
     });
-    // On load: set theme from storage or system
+    // On load: set theme from storage or system, but always default to dark
     (function() {
       const theme = localStorage.getItem('theme');
-      if (theme === 'light' || (theme === null && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      if (theme === 'light') {
         setMode(false);
       } else {
         setMode(true);
@@ -591,14 +534,12 @@
       const card = backSide.closest('.flip-card');
       card.classList.remove('flipped');
     }
-    // On touch devices: always show flip by tap
     document.addEventListener("DOMContentLoaded", () => {
       if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         document.querySelectorAll('.flip-card').forEach(card => {
           card.classList.add('no-hover');
         });
       }
-
       // Section reveal animation
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
