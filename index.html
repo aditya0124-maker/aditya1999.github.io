@@ -138,11 +138,10 @@
     .hero-right h3 {
       font-size: 1.38rem;
       color: #e0eaff;
-      min-height: 34px;
+      min-height: 40px;
       margin-bottom: 12px;
       font-weight: 400;
       letter-spacing: 0.02em;
-      min-height: 40px;
     }
     body.light .hero-right h3 { color: var(--light-accent); }
     .hero-right p {
@@ -228,15 +227,17 @@
       margin-bottom: 44px;
       animation: fadeIn 1.4s;
     }
+    /* Adjust flip card sizes for better fit */
     .flip-card {
-      flex: 1 1 290px;
-      min-width: 260px;
-      max-width: 320px;
+      flex: 1 1 260px; /* smaller base width */
+      min-width: 240px;
+      max-width: 280px;
       height: 340px;
       perspective: 1100px;
       animation: floatCard 6s ease-in-out infinite;
       border-radius: 14px;
       margin-bottom: 0;
+      box-sizing: border-box;
     }
     .flip-card-inner {
       position: relative;
@@ -245,6 +246,7 @@
       transition: transform 0.8s cubic-bezier(.4,1.7,.7,1.1);
       transform-style: preserve-3d;
       border-radius: 14px;
+      box-sizing: border-box;
     }
     .flip-card:not(.no-hover):hover .flip-card-inner,
     .flip-card.flipped .flip-card-inner {
@@ -265,11 +267,16 @@
       background: var(--card-bg);
       box-shadow: 0 2px 16px rgba(59,130,246,0.08);
       transition: background 0.3s, color 0.3s;
+      box-sizing: border-box;
     }
     .flip-card-back {
       transform: rotateY(180deg);
       background: #1f2937;
       color: #f1f5f9;
+      box-sizing: border-box;
+      padding-top: 30px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
     body.light .flip-card-front,
     body.light .flip-card-back {
@@ -298,6 +305,7 @@
     .flip-card-back p {
       font-size: 1.06rem;
       margin-bottom: 20px;
+      padding:0 5px;
     }
     .btn {
       margin-top: 12px;
@@ -315,6 +323,7 @@
       position: relative;
       overflow: hidden;
       outline: none;
+      user-select:none;
     }
     .btn:active { transform: scale(0.97);}
     .btn:hover, .btn:focus {
@@ -349,15 +358,16 @@
     .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);}
     .scroll-reveal.animate { opacity: 1; transform: translateY(0);}
     @media (max-width: 1100px) {
-      .grid { gap:18px;}
-      .flip-card { max-width: 320px; }
+      .grid { gap:18px; justify-content: center;}
+      .flip-card { max-width: 280px; flex: 1 1 calc(33.333% - 20px); }
     }
     @media (max-width: 875px) {
       .hero-inner { flex-direction: column; gap: 14px; text-align: center;}
       .hero-right { text-align: center; align-items: center; padding: 24px 0 0 0;}
       .container { padding: 36px 4vw 24px; }
-      .grid { gap: 18px; }
-      .flip-card { width: 90vw; height: 340px; }
+      .grid { gap: 18px; justify-content: center; }
+      .flip-card { width: 90vw; height: 340px; flex: 1 1 90vw; max-width: 90vw; }
+      .mobile-know { display: inline-block; }
     }
     @media (max-width: 600px) {
       .hero-left img { width: 140px; height: 140px; }
@@ -454,6 +464,20 @@
           </div>
         </div>
       </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Sr. BDE</h3>
+            <p>Work in Progress</p>
+            <p>&nbsp;</p>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+          </div>
+          <div class="flip-card-back" onclick="flipBack(event, this)">
+            <p>Will Update</p>
+            <a class="btn" href="https://www.nvidya.net/" target="_blank" rel="noopener">Visit</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <h2>Contact</h2>
@@ -470,7 +494,7 @@
   <script>
     // Typing effect for hero title
     const typingSpan = document.getElementById('typing');
-    const titles = ["Assistant Manager", "Sales Strategist", "Revenue Driver"];
+    const titles = ["Assistant Manager ", "Sales Strategist ", "Revenue Driver "];
     let i = 0, j = 0, current = "", isDeleting = false;
     function typeEffect() {
       typingSpan.innerHTML = current;
@@ -481,14 +505,14 @@
       }
       if (j === titles[i].length + 1) {
         isDeleting = true;
-        setTimeout(typeEffect, 1000); // Pause before deleting
+        setTimeout(typeEffect, 1000);
         return;
       }
       if (isDeleting && j === 0) {
         isDeleting = false;
         i = (i + 1) % titles.length;
       }
-      setTimeout(typeEffect, isDeleting ? 40 : 70); // Adjusted typing speed for better effect
+      setTimeout(typeEffect, isDeleting ? 40 : 70);
     }
 
     // Dark/Light Mode Toggle
@@ -523,7 +547,7 @@
       if (theme === 'light') {
         setMode(false);
       } else {
-        setMode(true); // Default dark mode
+        setMode(true);
       }
       typeEffect();
     })();
@@ -557,4 +581,3 @@
   </script>
 </body>
 </html>
-
