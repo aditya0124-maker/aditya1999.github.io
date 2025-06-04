@@ -190,108 +190,129 @@
       box-shadow: 0 2px 16px rgba(59,130,246,0.10);
     }
 
-    /* Removed previous .badge-experience styling, as per request */
+    /* Animations */
+    @keyframes float { 0%, 100% { transform: translateY(0);} 50% { transform: translateY(-22px);} }
+    @keyframes floatCard { 0%, 100% { transform: translateY(0px);} 50% { transform: translateY(-10px);} }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(30px);} to { opacity:1; transform: none;} }
+    @keyframes fadeInUp { from { opacity:0; transform: translateY(40px);} to { opacity:1; transform: none;} }
+    @keyframes fadeInDown { from { opacity:0; transform: translateY(-28px);} to { opacity:1; transform: none;} }
+    .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);}
+    .scroll-reveal.animate { opacity: 1; transform: translateY(0);}
 
-    /* EXPERIENCE STATS SECTION */
-.experience-stats-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  padding: 40px 20px;
-  background-color: var(--bg);
-}
+    /* --- STATS SECTION --- */
+    .experience-stats-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      padding: 48px 16px;
+      background: var(--bg);
+      flex-wrap: wrap;
+    }
+    .stats-badge {
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .stats-badge-number {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+      line-height: 1;
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    .stats-badge-label {
+      color: var(--text);
+      font-size: 1.17rem;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+    .stats-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 26px;
+      width: 420px;
+      max-width: 98vw;
+    }
+    .stats-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(59,130,246,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      min-width: 0;
+      padding: 12px 10px 12px 10px;
+      transition: background 0.3s, box-shadow 0.3s;
+      animation: floatCard 5s ease-in-out infinite;
+    }
+    .stats-card-title {
+      font-size: 1.23rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .stats-btn {
+      font-size: 1rem;
+      padding: 7px 22px;
+      margin: 0;
+      margin-top: 0;
+      min-width: 94px;
+      max-width: 100%;
+      width: auto;
+      box-sizing: border-box;
+    }
+    @media (max-width: 900px) {
+      .experience-stats-section {
+        flex-direction: column;
+        gap: 32px;
+        padding: 36px 4vw;
+      }
+      .stats-cards-grid {
+        width: 98vw;
+        max-width: 420px;
+        gap: 18px;
+      }
+    }
+    @media (max-width: 600px) {
+      .experience-stats-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        padding: 22px 0;
+      }
+      .stats-badge {
+        min-width: 0;
+        margin-bottom: 0;
+      }
+      .stats-cards-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        width: 95vw;
+        gap: 13px;
+      }
+      .stats-card {
+        height: 95px;
+        padding: 10px 4px;
+      }
+      .stats-btn {
+        font-size: 0.97rem;
+        padding: 7px 0.5em;
+        width: 90%;
+        min-width: 0;
+      }
+    }
 
-.stats-badge-float {
-  flex: 0 0 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  animation: floatCard 4s ease-in-out infinite;
-}
-
-.stats-badge-float .badge-number {
-  font-size: 5rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-.stats-badge-float .badge-label {
-  color: var(--text);
-  font-size: 1.2rem;
-}
-
-/* 2x2 Grid for cards */
-.stats-cards-grid-2x2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 110px);
-  gap: 24px;
-  width: 440px;
-  min-width: 300px;
-  max-width: 100%;
-}
-
-.stats-card-float {
-  animation: floatCard 5s ease-in-out infinite;
-  height: 110px;
-  min-width: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-.stats-card-float h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.15rem;
-}
-.stats-card-float .btn {
-  margin-top: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .experience-stats-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-  }
-  .stats-badge-float {
-    margin-bottom: 20px;
-  }
-  .stats-cards-grid-2x2 {
-    width: 98vw;
-    max-width: 400px;
-    min-width: 0;
-    gap: 18px;
-    grid-template-rows: repeat(2, 100px);
-  }
-}
-
-@media (max-width: 600px) {
-  .stats-cards-grid-2x2 {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 90px);
-    width: 100%;
-    gap: 12px;
-  }
-  .stats-card-float {
-    height: 90px;
-  }
-}
-    /* Add card animation delay for diversity */
-    .stats-card-float:nth-child(1) { --float-delay: 0s; }
-    .stats-card-float:nth-child(2) { --float-delay: 0.5s; }
-    .stats-card-float:nth-child(3) { --float-delay: 1s; }
-    .stats-card-float:nth-child(4) { --float-delay: 1.5s; }
-
-    /* Modal styles remain unchanged */
-
-    /* Work Experience: force flex row, responsive, no text overflow/disappearing */
+    /* --- WORK EXPERIENCE --- */
     .work-exp-grid {
       display: flex;
       flex-wrap: wrap;
@@ -450,26 +471,8 @@
       .work-exp-grid { gap: 12px;}
     }
     @media (max-width: 768px) {
-      .stats-cards-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
       .work-exp-grid { flex-direction: column; align-items: center; }
     }
-    @media (max-width: 480px) {
-      .stats-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      .flip-card { width: 98vw; min-width: 0; }
-    }
-    /* Animations and scroll reveal remain unchanged */
-    @keyframes float { 0%, 100% { transform: translateY(0);} 50% { transform: translateY(-22px);} }
-    @keyframes fadeIn { from { opacity:0; transform: translateY(30px);} to { opacity:1; transform: none;} }
-    @keyframes fadeInUp { from { opacity:0; transform: translateY(40px);} to { opacity:1; transform: none;} }
-    @keyframes fadeInDown { from { opacity:0; transform: translateY(-28px);} to { opacity:1; transform: none;} }
-    .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);}
-    .scroll-reveal.animate { opacity: 1; transform: translateY(0);}
   </style>
 </head>
 <body>
@@ -507,7 +510,34 @@
         Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.
       </p>
     </div>
-    <!-- Removed previous badge-experience section as per your request -->
+
+    <!-- EXPERIENCE STATS SECTION (NEW DESIGN) -->
+    <section class="experience-stats-section">
+      <!-- Badge on the left -->
+      <div class="stats-badge">
+        <div class="stats-badge-number">3+</div>
+        <div class="stats-badge-label">Years of Experience</div>
+      </div>
+      <!-- 2x2 Grid of cards on right -->
+      <div class="stats-cards-grid">
+        <div class="stats-card">
+          <div class="stats-card-title">Education</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalEducation')">View</button>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-title">Certifications</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalCert')">View</button>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-title">Skills</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalSkills')">View</button>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-title">Achievements</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalAchieve')">View</button>
+        </div>
+      </div>
+    </section>
 
     <h2>Work Experience</h2>
     <div class="work-exp-grid scroll-reveal">
@@ -568,34 +598,6 @@
         </div>
       </div>
     </div>
-
-<!-- EXPERIENCE STATS SECTION -->
-<section class="experience-stats-section">
-  <!-- Badge on left -->
-  <div class="stats-badge-float">
-    <div class="badge-number">3+</div>
-    <div class="badge-label">Years of Experience</div>
-  </div>
-  <!-- 2x2 Grid of cards on right -->
-  <div class="stats-cards-grid-2x2">
-    <div class="summary dropdown-column stats-card-float">
-      <h3>Education</h3>
-      <button class="btn" onclick="toggleModal('modalEducation')">View</button>
-    </div>
-    <div class="summary dropdown-column stats-card-float">
-      <h3>Certifications</h3>
-      <button class="btn" onclick="toggleModal('modalCert')">View</button>
-    </div>
-    <div class="summary dropdown-column stats-card-float">
-      <h3>Skills</h3>
-      <button class="btn" onclick="toggleModal('modalSkills')">View</button>
-    </div>
-    <div class="summary dropdown-column stats-card-float">
-      <h3>Achievements</h3>
-      <button class="btn" onclick="toggleModal('modalAchieve')">View</button>
-    </div>
-  </div>
-</section>
 
     <!-- MODALS -->
     <div id="modalEducation" class="modal">
