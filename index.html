@@ -523,37 +523,33 @@
       </div>
     </div>
 
-    <!-- EXPERIENCE STATS SECTION -->
-    <section class="experience-stats-section">
-      <!-- Badge with floating effect -->
-      <div class="stats-badge-float">
-        <div class="badge-number">3+</div>
-        <div class="badge-label">Years of Experience</div>
-      </div>
-      <!-- Cards with floating effect and grid layout -->
-      <div class="stats-cards-grid">
-        <!-- Education -->
-        <div class="summary dropdown-column stats-card-float">
-          <h3>Education</h3>
-          <button class="btn" onclick="toggleModal('modalEducation')">View</button>
-        </div>
-        <!-- Certifications -->
-        <div class="summary dropdown-column stats-card-float">
-          <h3>Certifications</h3>
-          <button class="btn" onclick="toggleModal('modalCert')">View</button>
-        </div>
-        <!-- Skills -->
-        <div class="summary dropdown-column stats-card-float">
-          <h3>Skills</h3>
-          <button class="btn" onclick="toggleModal('modalSkills')">View</button>
-        </div>
-        <!-- Achievements -->
-        <div class="summary dropdown-column stats-card-float">
-          <h3>Achievements</h3>
-          <button class="btn" onclick="toggleModal('modalAchieve')">View</button>
-        </div>
-      </div>
-    </section>
+<!-- EXPERIENCE STATS SECTION -->
+<section class="experience-stats-section">
+  <!-- Badge with floating effect -->
+  <div class="stats-badge-float">
+    <div class="badge-number">3+</div>
+    <div class="badge-label">Years of Experience</div>
+  </div>
+  <!-- Cards in a vertical column, all the same size -->
+  <div class="stats-cards-vertical">
+    <div class="summary dropdown-column stats-card-float">
+      <h3>Education</h3>
+      <button class="btn" onclick="toggleModal('modalEducation')">View</button>
+    </div>
+    <div class="summary dropdown-column stats-card-float">
+      <h3>Certifications</h3>
+      <button class="btn" onclick="toggleModal('modalCert')">View</button>
+    </div>
+    <div class="summary dropdown-column stats-card-float">
+      <h3>Skills</h3>
+      <button class="btn" onclick="toggleModal('modalSkills')">View</button>
+    </div>
+    <div class="summary dropdown-column stats-card-float">
+      <h3>Achievements</h3>
+      <button class="btn" onclick="toggleModal('modalAchieve')">View</button>
+    </div>
+  </div>
+</section>
 
     <!-- MODALS -->
     <div id="modalEducation" class="modal">
