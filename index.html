@@ -193,50 +193,96 @@
     /* Removed previous .badge-experience styling, as per request */
 
     /* EXPERIENCE STATS SECTION */
-    .experience-stats-section {
-      display: flex;
-      flex-wrap: wrap;
-      background-color: var(--bg);
-      padding: 40px 20px;
-      justify-content: center;
-      gap: 20px;
-    }
+.experience-stats-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 20px;
+  background-color: var(--bg);
+}
 
-    /* Floating badge and columns animation */
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0px);}
-      50% { transform: translateY(-10px);}
-    }
+.stats-badge-float {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: floatCard 4s ease-in-out infinite;
+}
 
-    .stats-badge-float {
-      flex: 1 1 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      animation: floatCard 4s ease-in-out infinite;
-    }
-    .stats-badge-float .badge-number {
-      font-size: 5rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .stats-badge-float .badge-label {
-      color: var(--text);
-      font-size: 1.2rem;
-    }
-    .stats-cards-grid {
-      flex: 2 1 600px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-      width: 100%;
-    }
-    .stats-card-float {
-      animation: floatCard 5s ease-in-out infinite;
-      animation-delay: calc(var(--float-delay, 0s));
-    }
+.stats-badge-float .badge-number {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.stats-badge-float .badge-label {
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+/* 2x2 Grid for cards */
+.stats-cards-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 110px);
+  gap: 24px;
+  width: 440px;
+  min-width: 300px;
+  max-width: 100%;
+}
+
+.stats-card-float {
+  animation: floatCard 5s ease-in-out infinite;
+  height: 110px;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.stats-card-float h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+}
+.stats-card-float .btn {
+  margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .experience-stats-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .stats-badge-float {
+    margin-bottom: 20px;
+  }
+  .stats-cards-grid-2x2 {
+    width: 98vw;
+    max-width: 400px;
+    min-width: 0;
+    gap: 18px;
+    grid-template-rows: repeat(2, 100px);
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-cards-grid-2x2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 90px);
+    width: 100%;
+    gap: 12px;
+  }
+  .stats-card-float {
+    height: 90px;
+  }
+}
     /* Add card animation delay for diversity */
     .stats-card-float:nth-child(1) { --float-delay: 0s; }
     .stats-card-float:nth-child(2) { --float-delay: 0.5s; }
@@ -525,13 +571,13 @@
 
 <!-- EXPERIENCE STATS SECTION -->
 <section class="experience-stats-section">
-  <!-- Badge with floating effect -->
+  <!-- Badge on left -->
   <div class="stats-badge-float">
     <div class="badge-number">3+</div>
     <div class="badge-label">Years of Experience</div>
   </div>
-  <!-- Cards in a vertical column, all the same size -->
-  <div class="stats-cards-vertical">
+  <!-- 2x2 Grid of cards on right -->
+  <div class="stats-cards-grid-2x2">
     <div class="summary dropdown-column stats-card-float">
       <h3>Education</h3>
       <button class="btn" onclick="toggleModal('modalEducation')">View</button>
