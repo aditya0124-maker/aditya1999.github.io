@@ -493,6 +493,144 @@
   </style>
 </head>
 <body>
+{
+  {
+  .contact-main-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 18px;
+  box-shadow: 0 2px 18px rgba(59,130,246,0.08);
+  padding: 32px 36px 32px 36px;
+  margin: 0 auto 36px auto;
+  max-width: 680px;
+  gap: 38px;
+  flex-wrap: wrap;
+  transition: background 0.3s, color 0.3s;
+}
+body.light .contact-main-box {
+  background: var(--light-card-bg);
+  color: var(--light-text);
+}
+
+.contact-left {
+  flex: 2 1 340px;
+  min-width: 200px;
+}
+.contact-headline {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+.contact-desc {
+  font-size: 1.07rem;
+  margin-bottom: 10px;
+  color: #e5e7eb;
+}
+body.light .contact-desc {
+  color: var(--light-text);
+}
+.contact-bold {
+  font-size: 1.07rem;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+body.light .contact-bold {
+  color: var(--light-text);
+}
+.contact-right {
+  flex: 1 1 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 140px;
+}
+.contact-email-btn {
+  font-size: 1.07rem;
+  padding: 14px 32px;
+  border-radius: 99px;
+  white-space: nowrap;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 18px rgba(59,130,246,0.13);
+  transition: background 0.22s, color 0.22s, transform 0.19s;
+}
+.contact-email-btn:hover, .contact-email-btn:focus {
+  background: #2563eb;
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.contact-icons-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 34px;
+  margin: 0 auto 0 auto;
+  max-width: 510px;
+}
+.contact-icon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-decoration: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+.contact-icon-btn svg {
+  width: 66px;
+  height: 66px;
+  background: transparent;
+  display: block;
+  border-radius: 50%;
+  transition: transform 0.18s, box-shadow 0.22s;
+  box-shadow: 0 1px 8px rgba(59,130,246,0.11);
+}
+.contact-icon-btn:hover svg, .contact-icon-btn:focus svg {
+  transform: scale(1.11);
+  box-shadow: 0 3px 18px rgba(59,130,246,0.20);
+}
+.contact-resume-btn {
+  margin-bottom: 0;
+  position: relative;
+}
+.contact-resume-text {
+  font-size: 0.97rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 6px;
+  text-align: center;
+  display: block;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 700px) {
+  .contact-main-box {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 22px 12px 24px 12px;
+    gap: 20px;
+  }
+  .contact-right {
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+  .contact-email-btn {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.1rem;
+  }
+  .contact-icons-row {
+    gap: 22px;
+  }
+} 
   <!-- Toggle Button -->
   <button class="toggle-dark" id="toggleDarkBtn" aria-label="Toggle dark mode">
     <span id="darkIcon">🌙</span>
