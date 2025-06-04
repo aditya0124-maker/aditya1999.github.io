@@ -13,10 +13,6 @@
       --accent: #3b82f6;
       --card-bg: #1e293b;
       --outline: #3b82f6;
-      --light-bg: #f8f9fa;
-      --light-card-bg: #fff;
-      --light-text: #1e293b;
-      --light-accent: #3b82f6;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -27,15 +23,13 @@
       min-height: 100vh;
       transition: background 0.4s, color 0.4s;
     }
-    body.light {
-      background: var(--light-bg);
-      color: var(--light-text);
-    }
-    .toggle-dark {
+
+    /* Resume download button (fixed header) */
+    .resume-header-btn {
       position: fixed;
       top: 18px;
       right: 18px;
-      padding: 8px 14px;
+      padding: 8px 18px 8px 14px;
       background: var(--accent);
       color: #fff;
       font-weight: bold;
@@ -50,16 +44,25 @@
       box-shadow: 0 2px 16px rgba(59,130,246,0.16);
       outline: none;
       transition: background 0.3s, color 0.3s, transform 0.2s;
+      text-decoration: none;
     }
-    .toggle-dark.light {
-      background: var(--light-accent);
-      color: var(--light-text);
+    .resume-header-btn svg {
+      width: 22px;
+      height: 22px;
+      margin-right: 3px;
+      vertical-align: middle;
+      fill: currentColor;
+      display: inline-block;
     }
-    .toggle-dark:hover {
+    .resume-header-btn:hover, .resume-header-btn:focus {
+      background: #2563eb;
+      color: #fff;
       transform: scale(1.07) rotate(-3deg);
       box-shadow: 0 4px 24px rgba(59,130,246,0.28);
+      text-decoration: none;
     }
 
+    /* Hero and main containers */
     .hero-header {
       background: linear-gradient(110deg, var(--primary) 60%, var(--accent) 100%);
       color: white;
@@ -67,10 +70,6 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(16, 24, 40, 0.08);
-    }
-    body.light .hero-header {
-      background: linear-gradient(110deg, var(--light-accent) 20%, #a5b4fc 100%);
-      color: var(--light-text);
     }
     .hero-header::before, .hero-header::after {
       content: '';
@@ -143,7 +142,6 @@
       font-weight: 400;
       letter-spacing: 0.02em;
     }
-    body.light .hero-right h3 { color: var(--light-accent); }
     .hero-right p {
       font-size: 1.15rem;
       line-height: 1.6;
@@ -151,7 +149,6 @@
       max-width: 600px;
       animation: fadeIn 1.2s;
     }
-    body.light .hero-right p { color: var(--light-text); }
 
     .container {
       max-width: 1100px;
@@ -184,11 +181,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-    body.light .summary {
-      background: var(--light-card-bg);
-      color: var(--light-text);
-      box-shadow: 0 2px 16px rgba(59,130,246,0.10);
-    }
 
     /* Animations */
     @keyframes float { 0%, 100% { transform: translateY(0);} 50% { transform: translateY(-22px);} }
@@ -199,7 +191,7 @@
     .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);}
     .scroll-reveal.animate { opacity: 1; transform: translateY(0);}
 
-    /* --- STATS SECTION (BADGE LEFT, CARDS RIGHT) --- */
+    /* --- STATS SECTION --- */
     .experience-stats-section {
       display: flex;
       align-items: stretch;
@@ -222,7 +214,7 @@
       flex: 0 0 180px;
     }
     .stats-badge-number {
-      font-size: 6.2rem; /* Increased size */
+      font-size: 6.2rem;
       font-weight: 800;
       color: var(--accent);
       margin-bottom: 6px;
@@ -244,6 +236,7 @@
       max-width: 100vw;
       flex: 1 1 370px;
       align-items: stretch;
+      justify-content: center;
     }
     .stats-card {
       background: var(--card-bg);
@@ -286,6 +279,7 @@
         width: 98vw;
         max-width: 440px;
         gap: 18px;
+        justify-content: center;
       }
       .stats-badge {
         min-width: 0;
@@ -309,6 +303,7 @@
         grid-template-rows: 1fr 1fr;
         width: 95vw;
         gap: 10px;
+        justify-content: center;
       }
       .stats-card {
         height: 92px;
@@ -326,6 +321,178 @@
       }
       .stats-badge-label {
         font-size: 1rem;
+      }
+    }
+
+    /* --- CONTACT SECTION --- */
+    .contact-main-box {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      background: var(--card-bg);
+      color: var(--text);
+      border-radius: 18px;
+      box-shadow: 0 2px 18px rgba(59,130,246,0.08);
+      padding: 32px 36px;
+      margin: 0 auto 36px auto;
+      max-width: 800px;
+      gap: 38px;
+      transition: background 0.3s, color 0.3s;
+      flex-wrap: wrap;
+    }
+    .contact-left {
+      flex: 2 1 350px;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .contact-headline {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    .contact-desc {
+      font-size: 1.07rem;
+      margin-bottom: 10px;
+      color: #e5e7eb;
+    }
+    .contact-bold {
+      font-size: 1.07rem;
+      margin-bottom: 0;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .contact-right {
+      flex: 1 1 220px;
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      gap: 18px;
+    }
+    .contact-email-btn {
+      font-size: 1.07rem;
+      padding: 14px 34px;
+      border-radius: 99px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 2px 18px rgba(59,130,246,0.13);
+      transition: background 0.22s, color 0.22s, transform 0.19s;
+      margin-bottom: 10px;
+      cursor: pointer;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      white-space: nowrap;
+      gap: 0.5em;
+    }
+    .contact-email-btn:hover, .contact-email-btn:focus {
+      background: #2563eb;
+      color: #fff;
+      transform: scale(1.04);
+      text-decoration: none;
+    }
+    .contact-social-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 22px;
+      margin-top: 0;
+      width: 100%;
+      justify-content: flex-end;
+    }
+    .contact-icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      border: none;
+      outline: none;
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 1px 8px rgba(59,130,246,0.16);
+      cursor: pointer;
+      transition: transform 0.16s, box-shadow 0.22s, background 0.22s;
+      position: relative;
+      text-decoration: none;
+    }
+    .contact-icon-btn svg {
+      width: 29px;
+      height: 29px;
+      display: block;
+      margin: auto;
+    }
+    .contact-icon-btn:hover, .contact-icon-btn:focus {
+      background: #1e293b;
+      transform: scale(1.12);
+      box-shadow: 0 3px 18px rgba(59,130,246,0.20);
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      text-decoration: none;
+    }
+    /* Responsive Contact Section */
+    @media (max-width: 900px) {
+      .contact-main-box {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 22px 12px 24px 12px;
+        gap: 22px;
+        max-width: 98vw;
+      }
+      .contact-left, .contact-right {
+        align-items: flex-start;
+        min-width: 0;
+        width: 100%;
+      }
+      .contact-right {
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        min-width: 0;
+      }
+      .contact-social-row {
+        justify-content: center;
+        width: 100%;
+      }
+      .contact-email-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .contact-main-box {
+        padding: 17px 4vw 17px 4vw;
+        gap: 18px;
+      }
+      .contact-headline {
+        font-size: 1.12rem;
+      }
+      .contact-desc, .contact-bold {
+        font-size: 0.97rem;
+      }
+      .contact-email-btn {
+        padding: 12px 5vw;
+        font-size: 1rem;
+      }
+      .contact-icon-btn {
+        width: 44px;
+        height: 44px;
+      }
+      .contact-icon-btn svg {
+        width: 22px;
+        height: 22px;
       }
     }
 
@@ -393,15 +560,6 @@
       padding-left: 12px;
       padding-right: 12px;
     }
-    body.light .flip-card-front,
-    body.light .flip-card-back {
-      background: var(--light-card-bg);
-      color: var(--light-text);
-    }
-    body.light .flip-card-back {
-      background: #e0e7ef;
-      color: #1e293b;
-    }
     .flip-card-front h3 {
       font-size: 1.15rem;
       color: var(--accent);
@@ -417,10 +575,6 @@
       line-height: 1.5;
       word-break: break-word;
       overflow-wrap: anywhere;
-    }
-    body.light .flip-card-front p,
-    body.light .flip-card-back p {
-      color: var(--light-text);
     }
     .flip-card-back p {
       margin-bottom: 18px;
@@ -493,150 +647,14 @@
   </style>
 </head>
 <body>
-{
-  {
-  .contact-main-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--card-bg);
-  color: var(--text);
-  border-radius: 18px;
-  box-shadow: 0 2px 18px rgba(59,130,246,0.08);
-  padding: 32px 36px 32px 36px;
-  margin: 0 auto 36px auto;
-  max-width: 680px;
-  gap: 38px;
-  flex-wrap: wrap;
-  transition: background 0.3s, color 0.3s;
-}
-body.light .contact-main-box {
-  background: var(--light-card-bg);
-  color: var(--light-text);
-}
-
-.contact-left {
-  flex: 2 1 340px;
-  min-width: 200px;
-}
-.contact-headline {
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--accent);
-}
-.contact-desc {
-  font-size: 1.07rem;
-  margin-bottom: 10px;
-  color: #e5e7eb;
-}
-body.light .contact-desc {
-  color: var(--light-text);
-}
-.contact-bold {
-  font-size: 1.07rem;
-  margin-bottom: 0;
-  font-weight: 600;
-  color: var(--text);
-}
-body.light .contact-bold {
-  color: var(--light-text);
-}
-.contact-right {
-  flex: 1 1 120px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  min-width: 140px;
-}
-.contact-email-btn {
-  font-size: 1.07rem;
-  padding: 14px 32px;
-  border-radius: 99px;
-  white-space: nowrap;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 700;
-  box-shadow: 0 2px 18px rgba(59,130,246,0.13);
-  transition: background 0.22s, color 0.22s, transform 0.19s;
-}
-.contact-email-btn:hover, .contact-email-btn:focus {
-  background: #2563eb;
-  color: #fff;
-  transform: scale(1.04);
-}
-
-.contact-icons-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 34px;
-  margin: 0 auto 0 auto;
-  max-width: 510px;
-}
-.contact-icon-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  text-decoration: none;
-  background: none;
-  border: none;
-  outline: none;
-}
-.contact-icon-btn svg {
-  width: 66px;
-  height: 66px;
-  background: transparent;
-  display: block;
-  border-radius: 50%;
-  transition: transform 0.18s, box-shadow 0.22s;
-  box-shadow: 0 1px 8px rgba(59,130,246,0.11);
-}
-.contact-icon-btn:hover svg, .contact-icon-btn:focus svg {
-  transform: scale(1.11);
-  box-shadow: 0 3px 18px rgba(59,130,246,0.20);
-}
-.contact-resume-btn {
-  margin-bottom: 0;
-  position: relative;
-}
-.contact-resume-text {
-  font-size: 0.97rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin-top: 6px;
-  text-align: center;
-  display: block;
-  letter-spacing: 0.02em;
-}
-
-@media (max-width: 700px) {
-  .contact-main-box {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 22px 12px 24px 12px;
-    gap: 20px;
-  }
-  .contact-right {
-    justify-content: flex-start;
-    margin-top: 10px;
-  }
-  .contact-email-btn {
-    width: 100%;
-    padding: 12px 0;
-    font-size: 1.1rem;
-  }
-  .contact-icons-row {
-    gap: 22px;
-  }
-} 
-  <!-- Toggle Button -->
-  <button class="toggle-dark" id="toggleDarkBtn" aria-label="Toggle dark mode">
-    <span id="darkIcon">🌙</span>
-    <span id="lightIcon" style="display:none;">☀️</span>
-    <span id="modeText">Dark</span>
-  </button>
+  <!-- Resume Download Button (Header, fixed) -->
+  <a class="resume-header-btn" href="Aditya-25.pdf" download>
+    <svg viewBox="0 0 20 20" fill="none">
+      <path d="M10 2v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="3" y="16" width="14" height="2" rx="1" fill="currentColor"/>
+    </svg>
+    Resume
+  </a>
 
   <!-- HEADER -->
   <header class="hero-header">
@@ -666,14 +684,12 @@ body.light .contact-bold {
       </p>
     </div>
 
-    <!-- EXPERIENCE STATS SECTION (BADGE LEFT, CARDS RIGHT) -->
+    <!-- EXPERIENCE STATS SECTION (centered on mobile) -->
     <section class="experience-stats-section">
-      <!-- Badge on the left -->
       <div class="stats-badge">
         <div class="stats-badge-number">3+</div>
         <div class="stats-badge-label">Years of Experience</div>
       </div>
-      <!-- 2x2 Grid of cards on right -->
       <div class="stats-cards-grid">
         <div class="stats-card">
           <div class="stats-card-title">Education</div>
@@ -853,43 +869,36 @@ body.light .contact-bold {
       }
     </script>
 
-    <!-- CONTACT SECTION (NEW DESIGN) -->
-<h2>Contact</h2>
-<div class="contact-main-box scroll-reveal">
-  <div class="contact-left">
-    <div class="contact-headline">Excited to Hear from You!</div>
-    <div class="contact-desc">
-      Whether it’s a question, a fresh idea, or just a friendly hello — you’re always welcome.
+    <!-- CONTACT SECTION (final layout) -->
+    <h2>Contact</h2>
+    <div class="contact-main-box scroll-reveal">
+      <div class="contact-left">
+        <div class="contact-headline">Excited to Hear from You!</div>
+        <div class="contact-desc">
+          Whether it’s a question, a fresh idea, or just a friendly hello — you’re always welcome.
+        </div>
+        <div class="contact-bold">
+          <b>I’m always open to new opportunities and great conversations.</b>
+        </div>
+      </div>
+      <div class="contact-right">
+        <a class="contact-email-btn" href="mailto:adadityakr111@gmail.com">Tap to Email</a>
+        <div class="contact-social-row">
+          <a class="contact-icon-btn" href="https://wa.me/919450650125" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+            <svg width="32" height="32" fill="none" viewBox="0 0 36 36">
+              <circle cx="18" cy="18" r="18" fill="#25D366"/>
+              <path fill="#fff" d="M27.1 24.7c-.4-.2-2.6-1.3-3-1.5-.4-.2-.7-.2-1 .2-.3.4-1.2 1.5-1.5 1.8-.3.3-.5.3-.9.1-.4-.2-1.6-.6-3-1.8-1.1-1-1.8-2.1-2-2.4-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.8.2-.3.2-.5.4-.8.1-.3 0-.6-.1-.8-.1-.2-1-2.6-1.3-3.7-.3-1-.6-.8-.8-.8h-.7c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.4 0 1.4.9 2.8 1.1 3.2.2.3.4.7.7 1.1.2.4 1.2 1.9 2.5 3.1 1.7 1.6 3.3 2.5 3.7 2.7.5.2.9.2 1.3.1.4-.1 1.3-.5 1.5-1 .2-.4.6-1.1.8-1.5.2-.4.2-.6.1-.8z"/>
+            </svg>
+          </a>
+          <a class="contact-icon-btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="32" height="32" fill="none" viewBox="0 0 36 36">
+              <circle cx="18" cy="18" r="18" fill="#0077B5"/>
+              <path fill="#fff" d="M13.1 24h-2.4V15h2.4v9zm-1.2-10.3c-.8 0-1.3-.5-1.3-1.2 0-.7.5-1.2 1.3-1.2.8 0 1.3.5 1.3 1.2 0 .7-.6 1.2-1.3 1.2zm11.1 10.3h-2.4v-4.5c0-1.1-.4-1.8-1.4-1.8-.7 0-1.1.5-1.3.9-.1.2-.1.5-.1.8V24h-2.4s.1-7.2 0-9H17v1.3c.3-.5 1-1.2 2.4-1.2 1.8 0 3.1 1.2 3.1 3.8V24z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="contact-bold">
-      <b>I’m always open to new opportunities and great conversations.</b>
-    </div>
-  </div>
-  <div class="contact-right">
-    <a class="btn contact-email-btn" href="mailto:adadityakr111@gmail.com">Tap to Email</a>
-  </div>
-</div>
-<div class="contact-icons-row scroll-reveal">
-  <a class="contact-icon-btn" href="https://wa.me/919450650125" target="_blank" title="WhatsApp" aria-label="WhatsApp">
-    <svg width="32" height="32" fill="none" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="18" fill="#25D366"/>
-      <path fill="#fff" d="M27.1 24.7c-.4-.2-2.6-1.3-3-1.5-.4-.2-.7-.2-1 .2-.3.4-1.2 1.5-1.5 1.8-.3.3-.5.3-.9.1-.4-.2-1.6-.6-3-1.8-1.1-1-1.8-2.1-2-2.4-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.8.2-.3.2-.5.4-.8.1-.3 0-.6-.1-.8-.1-.2-1-2.6-1.3-3.7-.3-1-.6-.8-.8-.8h-.7c-.2 0-.6.1-.9.4-.3.3-1.1 1-1.1 2.4 0 1.4.9 2.8 1.1 3.2.2.3.4.7.7 1.1.2.4 1.2 1.9 2.5 3.1 1.7 1.6 3.3 2.5 3.7 2.7.5.2.9.2 1.3.1.4-.1 1.3-.5 1.5-1 .2-.4.6-1.1.8-1.5.2-.4.2-.6.1-.8z"/>
-    </svg>
-  </a>
-  <a class="contact-icon-btn" href="https://www.linkedin.com/in/aditya-vishwakarma1999/" target="_blank" title="LinkedIn" aria-label="LinkedIn">
-    <svg width="32" height="32" fill="none" viewBox="0 0 36 36">
-      <circle cx="18" cy="18" r="18" fill="#0077B5"/>
-      <path fill="#fff" d="M13.1 24h-2.4V15h2.4v9zm-1.2-10.3c-.8 0-1.3-.5-1.3-1.2 0-.7.5-1.2 1.3-1.2.8 0 1.3.5 1.3 1.2 0 .7-.6 1.2-1.3 1.2zm11.1 10.3h-2.4v-4.5c0-1.1-.4-1.8-1.4-1.8-.7 0-1.1.5-1.3.9-.1.2-.1.5-.1.8V24h-2.4s.1-7.2 0-9H17v1.3c.3-.5 1-1.2 2.4-1.2 1.8 0 3.1 1.2 3.1 3.8V24z"/>
-    </svg>
-  </a>
-  <div class="contact-icon-btn contact-resume-btn">
-    <a href="Aditya-25.pdf" download title="Download Resume" aria-label="Download Resume">
-      <svg width="32" height="32" fill="none" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r="18" fill="#3b82f6"/>
-        <path fill="#fff" d="M18 24a1 1 0 01-1-1V15.4l-2.3 2.3a1 1 0 11-1.4-1.4l4-4a1 1 0 011.4 0l4 4a1 1 0 11-1.4 1.4L19 15.4V23a1 1 0 01-1 1z"/>
-      </svg>
-    </a>
-    <span class="contact-resume-text">Resume</span>
   </div>
   <footer>
     &copy; 2025 Aditya Vishwakarma | All Rights Reserved
@@ -918,43 +927,6 @@ body.light .contact-bold {
       setTimeout(typeEffect, isDeleting ? 40 : 70);
     }
 
-    // Dark/Light Mode Toggle
-    const toggleBtn = document.getElementById('toggleDarkBtn');
-    const modeText = document.getElementById('modeText');
-    const darkIcon = document.getElementById('darkIcon');
-    const lightIcon = document.getElementById('lightIcon');
-    function setMode(dark) {
-      if (dark) {
-        document.body.classList.remove('light');
-        modeText.textContent = "Dark";
-        darkIcon.style.display = '';
-        lightIcon.style.display = 'none';
-        toggleBtn.classList.remove('light');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.body.classList.add('light');
-        modeText.textContent = "Light";
-        darkIcon.style.display = 'none';
-        lightIcon.style.display = '';
-        toggleBtn.classList.add('light');
-        localStorage.setItem('theme', 'light');
-      }
-    }
-    toggleBtn.addEventListener('click', () => {
-      const isDark = !document.body.classList.contains('light');
-      setMode(!isDark);
-    });
-    // On load: set theme from storage or system, default to dark mode
-    (function() {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'light') {
-        setMode(false);
-      } else {
-        setMode(true);
-      }
-      typeEffect();
-    })();
-
     // Flip card interaction
     function flipCard(btn) {
       const card = btn.closest('.flip-card');
@@ -980,6 +952,7 @@ body.light .contact-bold {
         });
       }, { threshold: 0.15 });
       document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+      typeEffect();
     });
   </script>
 </body>
