@@ -199,7 +199,7 @@
     .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(.48,1.5,.54,1.01);}
     .scroll-reveal.animate { opacity: 1; transform: translateY(0);}
 
-    /* --- STATS SECTION (NEW LAYOUT) --- */
+    /* --- STATS SECTION (BADGE LEFT, CARDS RIGHT) --- */
     .experience-stats-section {
       display: flex;
       align-items: stretch;
@@ -208,8 +208,33 @@
       padding: 48px 16px;
       background: var(--bg);
       flex-wrap: wrap;
+      flex-direction: row;
     }
-
+    .stats-badge {
+      min-width: 180px;
+      max-width: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 0;
+      flex: 0 0 180px;
+    }
+    .stats-badge-number {
+      font-size: 6.2rem; /* Increased size */
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+      line-height: 1;
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    .stats-badge-label {
+      color: var(--text);
+      font-size: 1.17rem;
+      font-weight: 500;
+      margin-top: 6px;
+    }
     .stats-cards-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -220,7 +245,6 @@
       flex: 1 1 370px;
       align-items: stretch;
     }
-
     .stats-card {
       background: var(--card-bg);
       border-radius: 10px;
@@ -235,7 +259,6 @@
       animation: floatCard 5s ease-in-out infinite;
       height: 110px;
     }
-
     .stats-card-title {
       font-size: 1.10rem;
       font-weight: 600;
@@ -243,36 +266,6 @@
       margin-bottom: 12px;
       text-align: center;
     }
-
-    .stats-badge {
-      min-width: 180px;
-      max-width: 220px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-bottom: 0;
-      flex: 0 0 180px;
-    }
-
-    .stats-badge-number {
-      font-size: 4.5rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 6px;
-      line-height: 1;
-      animation: floatCard 4s ease-in-out infinite;
-    }
-
-    .stats-badge-label {
-      color: var(--text);
-      font-size: 1.50rem;
-      font-weight: 500;
-      margin-top: 6px;
-    }
-
-    /* View button tweaks for desktop and mobile */
     .stats-btn {
       font-size: 0.97rem;
       padding: 7px 18px;
@@ -299,6 +292,9 @@
         max-width: none;
         margin-bottom: 0;
         flex: none;
+      }
+      .stats-badge-number {
+        font-size: 4.2rem;
       }
     }
     @media (max-width: 600px) {
@@ -532,8 +528,13 @@
       </p>
     </div>
 
-    <!-- EXPERIENCE STATS SECTION (NEW LAYOUT) -->
+    <!-- EXPERIENCE STATS SECTION (BADGE LEFT, CARDS RIGHT) -->
     <section class="experience-stats-section">
+      <!-- Badge on the left -->
+      <div class="stats-badge">
+        <div class="stats-badge-number">3+</div>
+        <div class="stats-badge-label">Years of Experience</div>
+      </div>
       <!-- 2x2 Grid of cards on right -->
       <div class="stats-cards-grid">
         <div class="stats-card">
@@ -552,11 +553,6 @@
           <div class="stats-card-title">Achievements</div>
           <button class="btn stats-btn" onclick="toggleModal('modalAchieve')">View</button>
         </div>
-      </div>
-      <!-- Badge on the left -->
-      <div class="stats-badge">
-        <div class="stats-badge-number">3+</div>
-        <div class="stats-badge-label">Years of Experience</div>
       </div>
     </section>
 
