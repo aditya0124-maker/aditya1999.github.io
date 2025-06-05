@@ -196,13 +196,30 @@
       flex-wrap: wrap;
       flex-direction: row;
     }
-    .stats-main-col {
+    .stats-badge {
+      min-width: 180px;
+      max-width: 230px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      gap: 24px;
-      width: 100%;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 0;
+      flex: 0 0 180px;
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    .stats-badge-number {
+      font-size: 6.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .stats-badge-label {
+      color: var(--text);
+      font-size: 1.17rem;
+      font-weight: 500;
+      margin-top: 6px;
     }
     .stats-cards-grid {
       display: grid;
@@ -243,31 +260,26 @@
       max-width: 100%;
       width: auto;
       box-sizing: border-box;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 99px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(59,130,246,0.14);
+      font-weight: 600;
+      margin-top: 7px;
+      transition: background 0.22s, color 0.22s, transform 0.19s;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
     }
-    .stats-badge {
-      min-width: 180px;
-      max-width: 230px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-bottom: 0;
-      flex: 0 0 180px;
-      animation: floatCard 4s ease-in-out infinite;
-    }
-    .stats-badge-number {
-      font-size: 6.2rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 6px;
-      line-height: 1;
-    }
-    .stats-badge-label {
-      color: var(--text);
-      font-size: 1.17rem;
-      font-weight: 500;
-      margin-top: 6px;
+    .stats-btn:active { transform: scale(0.97);}
+    .stats-btn:hover, .stats-btn:focus {
+      background: #2563eb;
+      color: #fff;
+      transform: scale(1.07);
+      box-shadow: 0 4px 28px rgba(59,130,246,0.18);
     }
     @media (max-width: 900px) {
       .experience-stats-section {
@@ -299,11 +311,6 @@
         gap: 18px;
         padding: 18px 0 12px 0;
       }
-      .stats-main-col {
-        gap: 18px;
-        width: 100%;
-        align-items: center;
-      }
       .stats-cards-grid {
         width: 100%;
         display: grid;
@@ -311,7 +318,7 @@
         grid-template-rows: 1fr 1fr;
         gap: 10px 10px;
         max-width: 330px;
-        margin: 0 auto;
+        margin: 0 auto 18px auto;
         order: 1;
       }
       .stats-card {
@@ -330,8 +337,10 @@
       }
       .stats-badge {
         order: 2;
-        margin-top: 18px;
+        margin-top: 14px;
         margin-bottom: 0;
+        align-items: center;
+        justify-content: center;
       }
       .stats-badge-number {
         font-size: 2.8rem;
@@ -374,7 +383,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: stretch;
       gap: 48px;
       border-radius: 0;
       background: transparent;
@@ -427,9 +436,11 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      justify-content: flex-start;
+      justify-content: center;
       gap: 14px;
       min-width: 0;
+      height: 100%;
+      /* Vertically center the button row in the right column */
     }
     .contact-btn-row {
       display: flex;
@@ -460,6 +471,7 @@
       gap: 0.5em;
       animation: floatCard 6s ease-in-out infinite;
       min-width: 125px;
+      max-width: 210px;
     }
     .contact-email-btn:hover, .contact-email-btn:focus {
       background: #2563eb;
@@ -554,26 +566,31 @@
       }
       .contact-btn-row {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: flex-start;
-        gap: 12px;
+        gap: 10px;
         width: 100%;
       }
       .contact-email-btn {
-        width: 100%;
-        justify-content: flex-start;
-        font-size: 1.07rem;
-        margin-bottom: 0;
-        min-width: unset;
+        width: auto;
+        min-width: 130px;
+        max-width: 210px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        justify-content: center;
       }
       .contact-icon-btn-row {
         display: flex;
         flex-direction: row;
         gap: 18px;
         align-items: center;
-        justify-content: flex-start;
-        margin-top: 4px;
+        justify-content: center;
+        margin-top: 0;
         width: 100%;
+      }
+      .contact-btn-row .contact-icon-btn {
+        display: none !important;
       }
     }
     @media (max-width: 480px) {
@@ -781,33 +798,33 @@
         Known for my excellent communication skills and passion for continuous learning, I thrive in dynamic environments where strategic thinking meets hands-on execution. I am eager to take on new challenges in data-focused or client-driven roles that value growth, innovation, and measurable outcomes.
       </p>
     </div>
-    <!-- EXPERIENCE STATS SECTION (now with badge at bottom on mobile) -->
+    <!-- EXPERIENCE STATS SECTION (badge left, cards right; on mobile: cards top, badge below) -->
     <section class="experience-stats-section">
-      <div class="stats-main-col">
-        <div class="stats-cards-grid">
-          <div class="stats-card">
-            <div class="stats-card-title">Education</div>
-            <button class="btn stats-btn" onclick="toggleModal('modalEducation')">View</button>
-          </div>
-          <div class="stats-card">
-            <div class="stats-card-title">Certifications</div>
-            <button class="btn stats-btn" onclick="toggleModal('modalCert')">View</button>
-          </div>
-          <div class="stats-card">
-            <div class="stats-card-title">Skills</div>
-            <button class="btn stats-btn" onclick="toggleModal('modalSkills')">View</button>
-          </div>
-          <div class="stats-card">
-            <div class="stats-card-title">Achievements</div>
-            <button class="btn stats-btn" onclick="toggleModal('modalAchieve')">View</button>
-          </div>
+      <div class="stats-badge">
+        <div class="stats-badge-number">3+</div>
+        <div class="stats-badge-label">Years of Experience</div>
+      </div>
+      <div class="stats-cards-grid">
+        <div class="stats-card">
+          <div class="stats-card-title">Education</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalEducation')">View</button>
         </div>
-        <div class="stats-badge" style="margin-top: 22px;">
-          <div class="stats-badge-number">3+</div>
-          <div class="stats-badge-label">Years of Experience</div>
+        <div class="stats-card">
+          <div class="stats-card-title">Certifications</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalCert')">View</button>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-title">Skills</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalSkills')">View</button>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-title">Achievements</div>
+          <button class="btn stats-btn" onclick="toggleModal('modalAchieve')">View</button>
         </div>
       </div>
     </section>
+    <!-- On mobile, move the badge below the cards (JS will handle order swap) -->
+    <div id="mobile-badge-placeholder" style="display:none"></div>
     <h2>Work Experience</h2>
     <div class="work-exp-grid scroll-reveal">
       <div class="flip-card">
@@ -993,7 +1010,7 @@
               </svg>
             </a>
           </div>
-          <!-- For mobile: icons in row below email, see CSS media queries for layout swap -->
+          <!-- For mobile: icons in row below email -->
           <div class="contact-icon-btn-row" style="display:none">
             <a class="contact-icon-btn" href="https://wa.me/919450650125" target="_blank" title="WhatsApp" aria-label="WhatsApp">
               <svg width="32" height="32" fill="none" viewBox="0 0 36 36">
@@ -1048,6 +1065,52 @@
       const card = backSide.closest('.flip-card');
       card.classList.remove('flipped');
     }
+    // Responsive: Move badge below the cards on mobile, restore desktop order on resize
+    function updateStatsBadgeOrder() {
+      const statsSection = document.querySelector('.experience-stats-section');
+      const badge = document.querySelector('.stats-badge');
+      const cardsGrid = document.querySelector('.stats-cards-grid');
+      const mobileBadgePlaceholder = document.getElementById('mobile-badge-placeholder');
+      if (window.innerWidth <= 700) {
+        // Move badge after cards grid (mobile)
+        if (badge && cardsGrid && badge.nextSibling !== cardsGrid.nextSibling) {
+          cardsGrid.parentNode.insertBefore(badge, cardsGrid.nextSibling);
+        }
+      } else {
+        // Restore desktop: badge left, cards right
+        if (statsSection && badge && cardsGrid && statsSection.firstElementChild !== badge) {
+          statsSection.insertBefore(badge, cardsGrid);
+        }
+      }
+    }
+    // Contact Section: Button row for mobile/desktop
+    function updateContactButtonRows() {
+      const btnRow = document.querySelector('.contact-btn-row');
+      const iconRow = document.querySelector('.contact-icon-btn-row');
+      if (window.innerWidth <= 700) {
+        // Mobile: show icons below email button
+        if (iconRow && btnRow) {
+          iconRow.style.display = 'flex';
+          btnRow.style.flexDirection = 'column';
+          btnRow.style.alignItems = 'center';
+          btnRow.style.justifyContent = 'flex-start';
+          // Hide icons in btnRow
+          Array.from(btnRow.children).forEach((el, idx) => {
+            if (idx > 0) el.style.display = 'none';
+          });
+        }
+      } else {
+        // Desktop: all three in one row
+        if (iconRow && btnRow) {
+          iconRow.style.display = 'none';
+          btnRow.style.flexDirection = 'row';
+          btnRow.style.alignItems = 'center';
+          btnRow.style.justifyContent = 'flex-end';
+          // Show icons in btnRow
+          Array.from(btnRow.children).forEach(el => el.style.display = 'flex');
+        }
+      }
+    }
     document.addEventListener("DOMContentLoaded", () => {
       if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         document.querySelectorAll('.flip-card').forEach(card => {
@@ -1065,36 +1128,13 @@
       document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
       typeEffect();
 
-      // Responsive Contact Icon Row Swap
-      function updateContactButtonRows() {
-        const btnRow = document.querySelector('.contact-btn-row');
-        const iconRow = document.querySelector('.contact-icon-btn-row');
-        if (window.innerWidth <= 700) {
-          // Move icons below email btn for mobile
-          if (iconRow && btnRow) {
-            iconRow.style.display = 'flex';
-            btnRow.style.flexDirection = 'column';
-            btnRow.style.alignItems = 'flex-start';
-            btnRow.style.justifyContent = 'flex-start';
-            // Hide icons in btnRow
-            Array.from(btnRow.children).forEach((el, idx) => {
-              if (idx > 0) el.style.display = 'none';
-            });
-          }
-        } else {
-          // Put all three in one row for desktop
-          if (iconRow && btnRow) {
-            iconRow.style.display = 'none';
-            btnRow.style.flexDirection = 'row';
-            btnRow.style.alignItems = 'center';
-            btnRow.style.justifyContent = 'flex-end';
-            // Show icons in btnRow
-            Array.from(btnRow.children).forEach(el => el.style.display = 'flex');
-          }
-        }
-      }
+      // Initial responsive order/layout
+      updateStatsBadgeOrder();
       updateContactButtonRows();
-      window.addEventListener('resize', updateContactButtonRows);
+      window.addEventListener('resize', () => {
+        updateStatsBadgeOrder();
+        updateContactButtonRows();
+      });
     });
   </script>
 </body>
