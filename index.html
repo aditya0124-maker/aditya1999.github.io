@@ -400,9 +400,7 @@
       justify-content: flex-end;
       flex-wrap: wrap;
     }
-    /* Unified button styles for both <a> and <button> */
-    .contact-action-btn,
-    .contact-action-btn:visited {
+    .contact-action-btn {
       border-radius: 99px;
       background: var(--accent);
       color: #fff;
@@ -426,7 +424,6 @@
       user-select: none;
       z-index: 1;
       text-decoration: none;
-      box-sizing: border-box;
     }
     .contact-action-btn .material-symbols-outlined,
     .contact-action-btn .icon-svg {
@@ -442,6 +439,45 @@
       color: #fff;
       box-shadow: 0 4px 28px rgba(59,130,246,0.20);
       transform: scale(1.04) translateY(-2px);
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.55s linear;
+      background-color: rgba(59,130,246,0.28);
+      pointer-events: none;
+      z-index: 2;
+    }
+    @keyframes ripple {
+      to {
+        transform: scale(3.2);
+        opacity: 0;
+      }
+    }
+    .toast-popup {
+      position: fixed;
+      left: 50%;
+      bottom: 38px;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: #fff;
+      padding: 13px 32px;
+      border-radius: 32px;
+      font-size: 1.13rem;
+      font-weight: 600;
+      z-index: 5050;
+      min-width: 210px;
+      text-align: center;
+      box-shadow: 0 6px 32px rgba(34,197,94,0.16);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s, bottom 0.34s;
+    }
+    .toast-popup.visible {
+      opacity: 1;
+      pointer-events: auto;
+      bottom: 68px;
     }
     @media (max-width: 900px) {
       .contact-main-box {
@@ -470,8 +506,7 @@
         gap: 12px;
         padding: 10px 2vw 18px 2vw;
       }
-      .contact-action-btn,
-      .contact-action-btn:visited {
+      .contact-action-btn {
         font-size: 0.97rem;
         min-width: 160px;
         max-width: 95vw;
@@ -480,7 +515,6 @@
         justify-content: center;
         padding: 0 18px;
         margin: 0 auto;
-        box-sizing: border-box;
       }
       .contact-btns-row {
         flex-direction: column;
@@ -557,13 +591,6 @@
       padding-left: 12px;
       padding-right: 12px;
     }
-    .flip-card-front {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
     .flip-card-front h3 {
       font-size: 1.15rem;
       color: var(--accent);
@@ -580,16 +607,11 @@
       word-break: break-word;
       overflow-wrap: anywhere;
     }
-    .flip-card-front p { margin: 0 0 6px 0; }
-    .flip-card-front .btn, .flip-card-front .ripple-btn {
-      margin-top: 12px;
-      margin-bottom: 0;
-    }
     .flip-card-back p {
       margin-bottom: 18px;
       padding: 0 2px;
     }
-    .btn, .ripple-btn {
+    .btn {
       margin-top: 10px;
       padding: 10px 18px;
       background: var(--accent);
@@ -605,12 +627,11 @@
       position: relative;
       overflow: hidden;
       outline: none;
-      user-select: none;
+      user-select:none;
       min-width: 90px;
-      display: inline-block;
     }
-    .btn:active, .ripple-btn:active { transform: scale(0.97);}
-    .btn:hover, .btn:focus, .ripple-btn:hover, .ripple-btn:focus {
+    .btn:active { transform: scale(0.97);}
+    .btn:hover, .btn:focus {
       background: #2563eb;
       color: #fff;
       transform: scale(1.07);
@@ -647,63 +668,16 @@
       h2 { font-size: 1.3rem;}
       .summary { font-size: 1rem; padding: 15px;}
       .flip-card { height: 290px;}
-      .btn, .ripple-btn { font-size: 1rem; padding: 10px 16px;}
+      .btn { font-size: 1rem; padding: 10px 16px;}
       .work-exp-grid { gap: 12px;}
-      .flip-card-front .btn, .flip-card-front .ripple-btn {
-        margin-top: 6px;
-      }
-      .mobile-know {
-        display: inline-block;
-        margin-top: 12px;
-      }
     }
     @media (max-width: 768px) {
       .work-exp-grid { flex-direction: column; align-items: center; }
     }
-    /* Ripple effect */
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      transform: scale(0);
-      animation: ripple 0.55s linear;
-      background-color: rgba(59,130,246,0.28);
-      pointer-events: none;
-      z-index: 2;
-    }
-    @keyframes ripple {
-      to {
-        transform: scale(3.2);
-        opacity: 0;
-      }
-    }
-    .toast-popup {
-      position: fixed;
-      left: 50%;
-      bottom: 38px;
-      transform: translateX(-50%);
-      background: var(--success);
-      color: #fff;
-      padding: 13px 32px;
-      border-radius: 32px;
-      font-size: 1.13rem;
-      font-weight: 600;
-      z-index: 5050;
-      min-width: 210px;
-      text-align: center;
-      box-shadow: 0 6px 32px rgba(34,197,94,0.16);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s, bottom 0.34s;
-    }
-    .toast-popup.visible {
-      opacity: 1;
-      pointer-events: auto;
-      bottom: 68px;
-    }
   </style>
 </head>
 <body>
-  <a class="resume-header-btn ripple-btn" href="Aditya-25.pdf" download>
+  <a class="resume-header-btn" href="Aditya-25.pdf" download>
     <svg viewBox="0 0 20 20" fill="none">
       <path d="M10 2v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       <rect x="3" y="16" width="14" height="2" rx="1" fill="currentColor"/>
@@ -741,19 +715,19 @@
       <div class="stats-cards-grid">
         <div class="stats-card">
           <div class="stats-card-title">Education</div>
-          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalEducation')">View</button>
+          <button class="btn stats-btn" onclick="toggleModal('modalEducation')">View</button>
         </div>
         <div class="stats-card">
           <div class="stats-card-title">Certifications</div>
-          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalCert')">View</button>
+          <button class="btn stats-btn" onclick="toggleModal('modalCert')">View</button>
         </div>
         <div class="stats-card">
           <div class="stats-card-title">Skills</div>
-          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalSkills')">View</button>
+          <button class="btn stats-btn" onclick="toggleModal('modalSkills')">View</button>
         </div>
         <div class="stats-card">
           <div class="stats-card-title">Achievements</div>
-          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalAchieve')">View</button>
+          <button class="btn stats-btn" onclick="toggleModal('modalAchieve')">View</button>
         </div>
       </div>
     </section>
@@ -765,11 +739,12 @@
             <h3>Senior Business Development Executive</h3>
             <p>NVidya | Bhavyansh Infotech</p>
             <p>On this journey</p>
-            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
+            <p>&nbsp;</p>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
-            <a class="btn ripple-btn" href="https://www.nvidya.net/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn" href="https://www.nvidya.net/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -779,11 +754,11 @@
             <h3>Assistant Manager</h3>
             <p>Veranda HigherEd</p>
             <p>Jul 2024 - Mar 2025</p>
-            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
-            <a class="btn ripple-btn" href="https://verandahighered.com/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn" href="https://verandahighered.com/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -793,11 +768,11 @@
             <h3>Admission Counselor</h3>
             <p>upGrad | Talentedge</p>
             <p>Feb 2023 - Jan 2024</p>
-            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Empowered professionals with tailored program guidance while leading admissions efforts and supporting team success to consistently achieve enrollment targets.</p>
-            <a class="btn ripple-btn" href="https://www.upgrad.com/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn" href="https://www.upgrad.com/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -807,11 +782,11 @@
             <h3>Academic Counselor</h3>
             <p>CollegeDekho</p>
             <p>Jan 2022 - Dec 2022</p>
-            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
+            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering tailored counseling, and collaborating cross-functionally to optimize service delivery.</p>
-            <a class="btn ripple-btn" href="https://www.collegedekho.com/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn" href="https://www.collegedekho.com/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -819,14 +794,14 @@
     <!-- MODALS -->
     <div id="modalEducation" class="modal">
       <div class="modal-content">
-        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalEducation')">&times;</span>
+        <span class="close" aria-label="Close modal" onclick="toggleModal('modalEducation')">&times;</span>
         <h3>Education</h3>
         <p>Bachelor's of Computer Application</p>
       </div>
     </div>
     <div id="modalCert" class="modal">
       <div class="modal-content">
-        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalCert')">&times;</span>
+        <span class="close" aria-label="Close modal" onclick="toggleModal('modalCert')">&times;</span>
         <h3>Certifications</h3>
         <ul>
           <li><a href="https://www.linkedin.com/learning/certificates/61965902f5b9e7b000350892b83a98b2d2e3c9da6aeb83c2ec416d2f58311394" target="_blank">Career Essentials in Administrative Assistance</a></li>
@@ -838,7 +813,7 @@
     </div>
     <div id="modalSkills" class="modal">
       <div class="modal-content">
-        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalSkills')">&times;</span>
+        <span class="close" aria-label="Close modal" onclick="toggleModal('modalSkills')">&times;</span>
         <h3>Skills</h3>
         <ul>
           <li>Communication Skills (English & Hindi)</li>
@@ -853,7 +828,7 @@
     </div>
     <div id="modalAchieve" class="modal">
       <div class="modal-content">
-        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalAchieve')">&times;</span>
+        <span class="close" aria-label="Close modal" onclick="toggleModal('modalAchieve')">&times;</span>
         <h3>Achievements</h3>
         <p>Coming Soon</p>
       </div>
@@ -949,7 +924,22 @@
     &copy; 2025 Aditya Vishwakarma | All Rights Reserved
   </footer>
   <script>
-    // Ripple effect for all ripple-btns
+    function toggleModal(id) {
+      const modal = document.getElementById(id);
+      if (modal.style.display === "block") {
+        modal.style.display = "none";
+      } else {
+        modal.style.display = "block";
+      }
+    }
+    window.onclick = function(event) {
+      document.querySelectorAll(".modal").forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    };
+    // Ripple effect for all buttons with .ripple-btn
     function createRipple(event) {
       const button = event.currentTarget;
       const circle = document.createElement("span");
@@ -973,33 +963,10 @@
       button.appendChild(circle);
       circle.addEventListener("animationend", () => circle.remove());
     }
-    // Add ripple effect to all .ripple-btns (including dynamically added)
-    function addRippleListeners() {
-      document.querySelectorAll(".ripple-btn").forEach(btn => {
-        btn.removeEventListener("mousedown", createRipple);
-        btn.removeEventListener("touchstart", createRipple);
-        btn.addEventListener("mousedown", createRipple);
-        btn.addEventListener("touchstart", createRipple, {passive: true});
-      });
-    }
-    document.addEventListener("DOMContentLoaded", addRippleListeners);
-
-    // Modals
-    function toggleModal(id) {
-      const modal = document.getElementById(id);
-      if (modal.style.display === "block") {
-        modal.style.display = "none";
-      } else {
-        modal.style.display = "block";
-      }
-    }
-    window.onclick = function(event) {
-      document.querySelectorAll(".modal").forEach(modal => {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      });
-    };
+    document.querySelectorAll(".ripple-btn").forEach(btn => {
+      btn.addEventListener("mousedown", createRipple);
+      btn.addEventListener("touchstart", createRipple, {passive: true});
+    });
     // Copy email to clipboard & show toast
     const copyEmailBtn = document.getElementById("copyEmailBtn");
     const toastPopup = document.getElementById("toastPopup");
