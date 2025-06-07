@@ -591,6 +591,13 @@
       padding-left: 12px;
       padding-right: 12px;
     }
+    .flip-card-front {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     .flip-card-front h3 {
       font-size: 1.15rem;
       color: var(--accent);
@@ -606,6 +613,11 @@
       line-height: 1.5;
       word-break: break-word;
       overflow-wrap: anywhere;
+    }
+    .flip-card-front p { margin: 0 0 6px 0; }
+    .flip-card-front .btn, .flip-card-front .mobile-know {
+      margin-top: 12px;
+      margin-bottom: 0;
     }
     .flip-card-back p {
       margin-bottom: 18px;
@@ -670,6 +682,13 @@
       .flip-card { height: 290px;}
       .btn { font-size: 1rem; padding: 10px 16px;}
       .work-exp-grid { gap: 12px;}
+      .flip-card-front .btn, .flip-card-front .mobile-know {
+        margin-top: 6px;
+      }
+      .mobile-know {
+        display: inline-block;
+        margin-top: 12px;
+      }
     }
     @media (max-width: 768px) {
       .work-exp-grid { flex-direction: column; align-items: center; }
@@ -677,7 +696,7 @@
   </style>
 </head>
 <body>
-  <a class="resume-header-btn" href="Aditya-25.pdf" download>
+  <a class="resume-header-btn ripple-btn" href="Aditya-25.pdf" download>
     <svg viewBox="0 0 20 20" fill="none">
       <path d="M10 2v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       <rect x="3" y="16" width="14" height="2" rx="1" fill="currentColor"/>
@@ -715,19 +734,19 @@
       <div class="stats-cards-grid">
         <div class="stats-card">
           <div class="stats-card-title">Education</div>
-          <button class="btn stats-btn" onclick="toggleModal('modalEducation')">View</button>
+          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalEducation')">View</button>
         </div>
         <div class="stats-card">
           <div class="stats-card-title">Certifications</div>
-          <button class="btn stats-btn" onclick="toggleModal('modalCert')">View</button>
+          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalCert')">View</button>
         </div>
         <div class="stats-card">
           <div class="stats-card-title">Skills</div>
-          <button class="btn stats-btn" onclick="toggleModal('modalSkills')">View</button>
+          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalSkills')">View</button>
         </div>
         <div class="stats-card">
           <div class="stats-card-title">Achievements</div>
-          <button class="btn stats-btn" onclick="toggleModal('modalAchieve')">View</button>
+          <button class="btn stats-btn ripple-btn" onclick="toggleModal('modalAchieve')">View</button>
         </div>
       </div>
     </section>
@@ -739,12 +758,11 @@
             <h3>Senior Business Development Executive</h3>
             <p>NVidya | Bhavyansh Infotech</p>
             <p>On this journey</p>
-            <p>&nbsp;</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
-            <a class="btn" href="https://www.nvidya.net/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn ripple-btn" href="https://www.nvidya.net/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -754,11 +772,11 @@
             <h3>Assistant Manager</h3>
             <p>Veranda HigherEd</p>
             <p>Jul 2024 - Mar 2025</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Leading sales initiatives with a focus on revenue growth, C-suite engagement, and team management to consistently surpass business targets.</p>
-            <a class="btn" href="https://verandahighered.com/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn ripple-btn" href="https://verandahighered.com/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -768,11 +786,11 @@
             <h3>Admission Counselor</h3>
             <p>upGrad | Talentedge</p>
             <p>Feb 2023 - Jan 2024</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Empowered professionals with tailored program guidance while leading admissions efforts and supporting team success to consistently achieve enrollment targets.</p>
-            <a class="btn" href="https://www.upgrad.com/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn ripple-btn" href="https://www.upgrad.com/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -782,11 +800,11 @@
             <h3>Academic Counselor</h3>
             <p>CollegeDekho</p>
             <p>Jan 2022 - Dec 2022</p>
-            <button class="btn mobile-know" onclick="flipCard(this)">Know More</button>
+            <button class="btn mobile-know ripple-btn" onclick="flipCard(this)">Know More</button>
           </div>
           <div class="flip-card-back" onclick="flipBack(event, this)">
             <p>Guided students through UG/PG admissions by managing 80–100 leads daily, delivering tailored counseling, and collaborating cross-functionally to optimize service delivery.</p>
-            <a class="btn" href="https://www.collegedekho.com/" target="_blank" rel="noopener">Visit</a>
+            <a class="btn ripple-btn" href="https://www.collegedekho.com/" target="_blank" rel="noopener">Visit</a>
           </div>
         </div>
       </div>
@@ -794,14 +812,14 @@
     <!-- MODALS -->
     <div id="modalEducation" class="modal">
       <div class="modal-content">
-        <span class="close" aria-label="Close modal" onclick="toggleModal('modalEducation')">&times;</span>
+        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalEducation')">&times;</span>
         <h3>Education</h3>
         <p>Bachelor's of Computer Application</p>
       </div>
     </div>
     <div id="modalCert" class="modal">
       <div class="modal-content">
-        <span class="close" aria-label="Close modal" onclick="toggleModal('modalCert')">&times;</span>
+        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalCert')">&times;</span>
         <h3>Certifications</h3>
         <ul>
           <li><a href="https://www.linkedin.com/learning/certificates/61965902f5b9e7b000350892b83a98b2d2e3c9da6aeb83c2ec416d2f58311394" target="_blank">Career Essentials in Administrative Assistance</a></li>
@@ -813,7 +831,7 @@
     </div>
     <div id="modalSkills" class="modal">
       <div class="modal-content">
-        <span class="close" aria-label="Close modal" onclick="toggleModal('modalSkills')">&times;</span>
+        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalSkills')">&times;</span>
         <h3>Skills</h3>
         <ul>
           <li>Communication Skills (English & Hindi)</li>
@@ -828,7 +846,7 @@
     </div>
     <div id="modalAchieve" class="modal">
       <div class="modal-content">
-        <span class="close" aria-label="Close modal" onclick="toggleModal('modalAchieve')">&times;</span>
+        <span class="close ripple-btn" aria-label="Close modal" onclick="toggleModal('modalAchieve')">&times;</span>
         <h3>Achievements</h3>
         <p>Coming Soon</p>
       </div>
